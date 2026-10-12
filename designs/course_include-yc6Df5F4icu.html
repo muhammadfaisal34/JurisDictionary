@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CourseInclude</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+    <style type="text/tailwindcss">
+      @theme inline {
+        --color-background: var(--background);
+        --color-foreground: var(--foreground);
+        --color-primary: var(--primary);
+        --color-primary-foreground: var(--primary-foreground);
+        --color-secondary: var(--secondary);
+        --color-secondary-foreground: var(--secondary-foreground);
+        --color-muted: var(--muted);
+        --color-muted-foreground: var(--muted-foreground);
+        --color-accent: var(--accent);
+        --color-accent-foreground: var(--accent-foreground);
+        --color-destructive: var(--destructive);
+        --color-destructive-foreground: var(--destructive-foreground);
+        --color-card: var(--card);
+        --color-card-foreground: var(--card-foreground);
+        --color-popover: var(--popover);
+        --color-popover-foreground: var(--popover-foreground);
+        --color-border: var(--border);
+        --color-input: var(--input);
+        --color-ring: var(--ring);
+        --color-chart-1: var(--chart-1);
+        --color-chart-2: var(--chart-2);
+        --color-chart-3: var(--chart-3);
+        --color-chart-4: var(--chart-4);
+        --color-chart-5: var(--chart-5);
+
+        --font-sans: var(--font-sans);
+        --font-heading: var(--font-heading, var(--font-sans));
+        --font-serif: var(--font-serif);
+        --font-mono: var(--font-mono);
+      }
+
+      @theme {
+        --radius-xs: calc(var(--radius) - 8px);
+        --radius-sm: calc(var(--radius) - 4px);
+        --radius-md: calc(var(--radius) - 2px);
+        --radius-lg: var(--radius);
+        --radius-xl: calc(var(--radius) + 4px);
+        --radius-2xl: calc(var(--radius) + 8px);
+        --radius-3xl: calc(var(--radius) + 16px);
+        --radius-4xl: calc(var(--radius) + 24px);
+      }
+
+      * {
+        corner-shape: var(--shape, round);
+      }
+
+      .rounded-full,
+      .rounded-none,
+      .rounded-t-full,
+      .rounded-t-none,
+      .rounded-r-full,
+      .rounded-r-none,
+      .rounded-b-full,
+      .rounded-b-none,
+      .rounded-l-full,
+      .rounded-l-none,
+      .rounded-s-full,
+      .rounded-s-none,
+      .rounded-e-full,
+      .rounded-e-none,
+      .rounded-tl-full,
+      .rounded-tl-none,
+      .rounded-tr-full,
+      .rounded-tr-none,
+      .rounded-bl-full,
+      .rounded-bl-none,
+      .rounded-br-full,
+      .rounded-br-none,
+      .rounded-ss-full,
+      .rounded-ss-none,
+      .rounded-se-full,
+      .rounded-se-none,
+      .rounded-es-full,
+      .rounded-es-none,
+      .rounded-ee-full,
+      .rounded-ee-none {
+        corner-shape: round;
+      }
+
+      @utility rounded-* {
+        border-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-t-* {
+        border-top-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-top-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-r-* {
+        border-top-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-bottom-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-b-* {
+        border-bottom-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-bottom-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-l-* {
+        border-top-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-bottom-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-tl-* {
+        border-top-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-tr-* {
+        border-top-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-bl-* {
+        border-bottom-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-br-* {
+        border-bottom-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-s-* {
+        border-start-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-end-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-e-* {
+        border-start-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-end-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-ss-* {
+        border-start-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-se-* {
+        border-start-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-es-* {
+        border-end-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-ee-* {
+        border-end-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+
+      @layer base {
+        * {
+          @apply border-border outline-ring/50;
+        }
+        body {
+          @apply bg-background text-foreground font-sans;
+        }
+      }
+
+      :root {
+        --shape: round;
+        --shape-multiplier: 1;
+
+        --background: #f8fafc;
+        --foreground: #0f172a;
+        --primary: #0c3b88;
+        --primary-foreground: #ffffff;
+        --secondary: #f1f5f9;
+        --secondary-foreground: #0f172a;
+        --muted: #f1f5f9;
+        --muted-foreground: #64748b;
+        --accent: #c81e28;
+        --accent-foreground: #ffffff;
+        --destructive: #dc2626;
+        --destructive-foreground: #ffffff;
+        --card: #ffffff;
+        --card-foreground: #0f172a;
+        --popover: #ffffff;
+        --popover-foreground: #0f172a;
+        --border: #e2e8f0;
+        --input: #ffffff;
+        --ring: #0c3b88;
+        --chart-1: #0c3b88;
+        --chart-2: #c81e28;
+        --chart-3: #16a34a;
+        --chart-4: #f59e0b;
+        --chart-5: #2563eb;
+
+        --font-sans: "Inter", sans-serif;
+        --font-heading: "Plus Jakarta Sans", sans-serif;
+        --font-serif: "Playfair Display", serif;
+        --font-mono: "JetBrains Mono", monospace;
+
+        --radius: 0.75rem;
+      }
+
+      /* Prevent layout shift for icons without explicit dimensions */
+      iconify-icon:not([width]):not([height]) {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+      }
+
+      /* Hide scrollbars */
+      *,
+      *::before,
+      *::after {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      *::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="min-h-screen bg-background text-foreground pb-24 font-sans selection:bg-primary/20">
+      <header
+        class="sticky top-0 z-40 bg-card/95 backdrop-blur-md border-b border-border px-5 pt-12 pb-3.5 space-y-3 shadow-xs"
+      >
+        <div class="flex items-center justify-between">
+          <a href="home_screen-6S2QnNNFe4u.html" class="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
+            <img
+              alt="JurisDictionary Logo"
+              src="https://ggrhecslgdflloszjkwl.supabase.co/storage/v1/object/public/user-assets/3UkwyEF5NlN/ai/Jurisdictionary-4ZyQTmgzaZW.png"
+              class="h-9 w-auto object-contain shrink-0"
+            />
+            <div class="leading-tight">
+              <div
+                class="font-extrabold text-foreground text-base tracking-tight font-heading flex items-center"
+              >
+                JurisDictionary<span class="text-[10px] align-super text-muted-foreground ml-0.5"
+                  >®</span
+                >
+              </div>
+              <p class="text-[10px] text-muted-foreground font-semibold tracking-wider uppercase">
+                Official Tactics Course
+              </p>
+            </div>
+          </a>
+          <a
+            href="sign_in-hRDCpZUfUiF.html"
+            class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-primary/10 hover:bg-primary/15 text-primary text-xs font-bold transition-all border border-primary/20 active:scale-95"
+          >
+            <iconify-icon icon="ph:sign-in-bold" class="text-sm"></iconify-icon><span>Sign In</span>
+          </a>
+        </div>
+        <div class="relative">
+          <iconify-icon
+            icon="ph:magnifying-glass-bold"
+            class="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground text-sm"
+          ></iconify-icon
+          ><input
+            type="text"
+            class="w-full bg-input/50 border border-border focus:border-primary focus:ring-1 focus:ring-primary rounded-xl pl-9 pr-3.5 py-2.5 text-xs text-foreground placeholder:text-muted-foreground transition-all outline-none"
+            placeholder="Search 51 course topics, rules &amp; tactics..."
+          />
+        </div>
+        <div class="flex justify-end items-center">
+          <a
+            href="reviews-g9jPk7Eb48W.html"
+            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-800 border border-amber-400/35 text-xs font-bold transition-all shadow-2xs active:scale-95 group"
+          >
+            <iconify-icon icon="ph:star-fill" class="text-amber-500 text-sm group-hover:scale-110 transition-transform"></iconify-icon>
+            <span>Reviews</span>
+            <iconify-icon icon="ph:arrow-right-bold" class="text-amber-600/70 text-[10px]"></iconify-icon>
+          </a>
+        </div>
+      </header>
+      <main class="px-5 pt-4 space-y-4">
+        <div
+          class="bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-950 text-white p-4 rounded-2xl shadow-sm border border-emerald-700/50 flex items-center justify-between"
+        >
+          <div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-300"
+              >Curriculum</span
+            >
+            <h1 class="text-xl font-extrabold font-heading text-white">Course Includes</h1>
+            <p class="text-xs text-emerald-100/90 font-medium mt-0.5">
+              51 Complete Lessons, Audio, Video &amp; Forms
+            </p>
+          </div>
+          <div
+            class="w-11 h-11 rounded-xl bg-emerald-700/60 border border-emerald-500/40 flex items-center justify-center shrink-0 text-amber-300 shadow-inner"
+          >
+            <iconify-icon icon="ph:books-fill" class="text-2xl"></iconify-icon>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                1
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >5 Hour Video Seminar</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                2
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >2½ Hour Audio Classroom</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                3
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Evidence Rules Made Easy</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                4
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                  >Objections that Stick!</span
+                ><span
+                  class="text-[9px] font-extrabold bg-amber-400 text-amber-950 px-1.5 py-0.5 rounded uppercase tracking-wider"
+                  >NEW!</span
+                >
+              </div>
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                5
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >How to Stay Out of Jail</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                6
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >The Key to Winning !</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                7
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Essential Fact Elements</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                8
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Summary Judgment Tactics</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                9
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Sample Legal Forms</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                10
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Tips to Control Lawyers</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                11
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >How to Convince Judges</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                12
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Proper Use of Affidavits</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                13
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Effective Legal Argument</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                14
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >How to Get Court Orders</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                15
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Motions</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                16
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Depositions</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                17
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Pleadings</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                18
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >How to Write a Complaint</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                19
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >How to Write an Answer</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                20
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >How to Get Evidence</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                21
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >How to Compel Evidence</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                22
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Affirmative Defenses</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                23
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Stop Foreclosure</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                24
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Win in Family Court</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                25
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >How to Win on Appeal</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                26
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Child Custody Tactics</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                27
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >How to Read the Law</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                28
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >How to Use Stipulations</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                29
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Preparing for Court</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                30
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Legal Research</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                31
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Proper Legal Citations</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                32
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Claims &amp; Causes of Action</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                33
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Show Cause Procedures</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                34
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Circumstantial Evidence</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                35
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Default Judgment Tactics</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                36
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Easy Guide and Flowchart</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                37
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Trial Prep &amp; Procedure</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                38
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Online Q&amp;A Legal Forum</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                39
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Online Legal Research</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                40
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >How to Collect Judgments</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                41
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >How to Find Rules of Court</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                42
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Legal Writing Tips</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                43
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Common Law Maxims</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                44
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Contract Law Basics</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                45
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Property Law Basics</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                46
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Foundations of Law</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                47
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Natural Law Principles</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                48
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Guide to Rules of Order</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                49
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >The Trial of Jesus</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                50
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >Why You Need this Course</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="flex items-center justify-between p-3.5 bg-card hover:bg-emerald-50/50 border border-border hover:border-emerald-600/40 rounded-xl transition-all shadow-2xs group"
+            ><div class="flex items-center gap-3">
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-900/10 text-emerald-800 flex items-center justify-center text-xs font-bold"
+              >
+                51
+              </div>
+              <span class="text-xs font-bold text-foreground group-hover:text-emerald-800"
+                >What Makes Winning Easy</span
+              >
+            </div>
+            <iconify-icon
+              icon="ph:caret-right-bold"
+              class="text-muted-foreground group-hover:text-emerald-800 text-sm transition-transform group-hover:translate-x-0.5"
+            ></iconify-icon
+          ></a>
+        </div>
+        <div class="pt-2">
+          <a
+            href="order-2r4Rm0xYGjE.html"
+            class="w-full bg-primary hover:bg-primary/95 text-primary-foreground py-3.5 px-4 rounded-xl font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2 active:scale-[0.99] text-center"
+          >
+            <span>Get Everything You Need – $249</span>
+            <iconify-icon icon="ph:arrow-right-bold" class="text-base"></iconify-icon>
+          </a>
+        </div>
+        <footer class="pt-3 pb-2 text-center border-t border-border/60">
+          <p class="text-[11px] text-muted-foreground">Educational use only · Not legal advice</p>
+          <p class="text-[10px] text-muted-foreground/80 mt-1">
+            © 1997-2026 Dr. Frederick Graves d/b/a Jurisdictionary®
+          </p>
+        </footer>
+      </main>
+      <nav
+        class="fixed bottom-0 left-0 w-full bg-card/95 backdrop-blur-md border-t border-border px-2 py-2 pb-5 flex justify-around items-center z-50 shadow-lg"
+      >
+        <a
+          href="home_screen-6S2QnNNFe4u.html"
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <div class="w-10 h-7 rounded-full flex items-center justify-center">
+            <iconify-icon icon="ph:house-bold" class="text-lg"></iconify-icon>
+          </div>
+          <span class="text-[10px] sm:text-[11px] font-medium text-center leading-tight truncate">Home</span>
+        </a>
+        <a
+          href="tutoring_screen-Df2xkyPXI3c.html"
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <div class="w-10 h-7 rounded-full flex items-center justify-center">
+            <iconify-icon icon="ph:graduation-cap-bold" class="text-lg"></iconify-icon>
+          </div>
+          <span class="text-[10px] sm:text-[11px] font-medium text-center leading-tight truncate">Tutoring</span>
+        </a>
+        <a
+          href="course_include-yc6Df5F4icu.html"
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 text-primary"
+        >
+          <div class="w-10 h-7 rounded-full bg-primary/10 flex items-center justify-center">
+            <iconify-icon icon="ph:book-open-fill" class="text-lg"></iconify-icon>
+          </div>
+          <span class="text-[10px] sm:text-[11px] font-bold text-center leading-tight truncate">Course Include</span>
+        </a>
+        <a
+          href="about_us-msvVEMuOv4W.html"
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <div class="w-10 h-7 rounded-full flex items-center justify-center">
+            <iconify-icon icon="ph:info-bold" class="text-lg"></iconify-icon>
+          </div>
+          <span class="text-[10px] sm:text-[11px] font-medium text-center leading-tight truncate">About Us</span>
+        </a>
+      </nav>
+    </div>
+  </body>
+</html>

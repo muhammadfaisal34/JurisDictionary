@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Key to Winning</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+    <style type="text/tailwindcss">
+      @theme inline {
+        --color-background: var(--background);
+        --color-foreground: var(--foreground);
+        --color-primary: var(--primary);
+        --color-primary-foreground: var(--primary-foreground);
+        --color-secondary: var(--secondary);
+        --color-secondary-foreground: var(--secondary-foreground);
+        --color-muted: var(--muted);
+        --color-muted-foreground: var(--muted-foreground);
+        --color-accent: var(--accent);
+        --color-accent-foreground: var(--accent-foreground);
+        --color-destructive: var(--destructive);
+        --color-destructive-foreground: var(--destructive-foreground);
+        --color-card: var(--card);
+        --color-card-foreground: var(--card-foreground);
+        --color-popover: var(--popover);
+        --color-popover-foreground: var(--popover-foreground);
+        --color-border: var(--border);
+        --color-input: var(--input);
+        --color-ring: var(--ring);
+        --color-chart-1: var(--chart-1);
+        --color-chart-2: var(--chart-2);
+        --color-chart-3: var(--chart-3);
+        --color-chart-4: var(--chart-4);
+        --color-chart-5: var(--chart-5);
+
+        --font-sans: var(--font-sans);
+        --font-heading: var(--font-heading, var(--font-sans));
+        --font-serif: var(--font-serif);
+        --font-mono: var(--font-mono);
+      }
+
+      @theme {
+        --radius-xs: calc(var(--radius) - 8px);
+        --radius-sm: calc(var(--radius) - 4px);
+        --radius-md: calc(var(--radius) - 2px);
+        --radius-lg: var(--radius);
+        --radius-xl: calc(var(--radius) + 4px);
+        --radius-2xl: calc(var(--radius) + 8px);
+        --radius-3xl: calc(var(--radius) + 16px);
+        --radius-4xl: calc(var(--radius) + 24px);
+      }
+
+      * {
+        corner-shape: var(--shape, round);
+      }
+
+      .rounded-full,
+      .rounded-none,
+      .rounded-t-full,
+      .rounded-t-none,
+      .rounded-r-full,
+      .rounded-r-none,
+      .rounded-b-full,
+      .rounded-b-none,
+      .rounded-l-full,
+      .rounded-l-none,
+      .rounded-s-full,
+      .rounded-s-none,
+      .rounded-e-full,
+      .rounded-e-none,
+      .rounded-tl-full,
+      .rounded-tl-none,
+      .rounded-tr-full,
+      .rounded-tr-none,
+      .rounded-bl-full,
+      .rounded-bl-none,
+      .rounded-br-full,
+      .rounded-br-none,
+      .rounded-ss-full,
+      .rounded-ss-none,
+      .rounded-se-full,
+      .rounded-se-none,
+      .rounded-es-full,
+      .rounded-es-none,
+      .rounded-ee-full,
+      .rounded-ee-none {
+        corner-shape: round;
+      }
+
+      @utility rounded-* {
+        border-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-t-* {
+        border-top-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-top-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-r-* {
+        border-top-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-bottom-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-b-* {
+        border-bottom-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-bottom-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-l-* {
+        border-top-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-bottom-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-tl-* {
+        border-top-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-tr-* {
+        border-top-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-bl-* {
+        border-bottom-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-br-* {
+        border-bottom-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-s-* {
+        border-start-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-end-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-e-* {
+        border-start-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-end-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-ss-* {
+        border-start-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-se-* {
+        border-start-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-es-* {
+        border-end-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-ee-* {
+        border-end-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+
+      @layer base {
+        * {
+          @apply border-border outline-ring/50;
+        }
+        body {
+          @apply bg-background text-foreground font-sans;
+        }
+      }
+
+      :root {
+        --shape: round;
+        --shape-multiplier: 1;
+
+        --background: #f8fafc;
+        --foreground: #0f172a;
+        --primary: #0c3b88;
+        --primary-foreground: #ffffff;
+        --secondary: #f1f5f9;
+        --secondary-foreground: #0f172a;
+        --muted: #f1f5f9;
+        --muted-foreground: #64748b;
+        --accent: #c81e28;
+        --accent-foreground: #ffffff;
+        --destructive: #dc2626;
+        --destructive-foreground: #ffffff;
+        --card: #ffffff;
+        --card-foreground: #0f172a;
+        --popover: #ffffff;
+        --popover-foreground: #0f172a;
+        --border: #e2e8f0;
+        --input: #ffffff;
+        --ring: #0c3b88;
+        --chart-1: #0c3b88;
+        --chart-2: #c81e28;
+        --chart-3: #16a34a;
+        --chart-4: #f59e0b;
+        --chart-5: #2563eb;
+
+        --font-sans: "Inter", sans-serif;
+        --font-heading: "Plus Jakarta Sans", sans-serif;
+        --font-serif: "Playfair Display", serif;
+        --font-mono: "JetBrains Mono", monospace;
+
+        --radius: 0.75rem;
+      }
+
+      /* Prevent layout shift for icons without explicit dimensions */
+      iconify-icon:not([width]):not([height]) {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+      }
+
+      /* Hide scrollbars */
+      *,
+      *::before,
+      *::after {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      *::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="min-h-screen bg-background text-foreground pb-24 font-sans selection:bg-primary/20">
+      
+      <!-- Header matching main menu / home screen copy -->
+      <header
+        class="sticky top-0 z-40 bg-card/95 backdrop-blur-md border-b border-border px-5 pt-12 pb-3.5 space-y-3 shadow-xs"
+      >
+        <div class="flex items-center justify-between gap-2">
+          <div class="flex items-center gap-2">
+            <a
+              href="main_menu-XHH3AzhjuHX.html"
+              class="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center text-foreground hover:bg-secondary/80 border border-border transition-all active:scale-95 shrink-0"
+              aria-label="Go back"
+            >
+              <iconify-icon icon="ph:arrow-left-bold" class="text-base"></iconify-icon>
+            </a>
+            <a href="home_screen__copy_-2s02TP1UkL8.html" class="flex items-center gap-2 hover:opacity-90 transition-opacity">
+              <img
+                alt="JurisDictionary Logo"
+                src="https://ggrhecslgdflloszjkwl.supabase.co/storage/v1/object/public/user-assets/3UkwyEF5NlN/ai/Jurisdictionary-4ZyQTmgzaZW.png"
+                class="h-8 w-auto object-contain shrink-0"
+              />
+              <div class="leading-tight">
+                <div
+                  class="font-extrabold text-foreground text-sm tracking-tight font-heading flex items-center"
+                >
+                  JurisDictionary<span class="text-[9px] align-super text-muted-foreground ml-0.5"
+                    >®</span
+                  >
+                </div>
+                <p class="text-[9px] text-muted-foreground font-semibold tracking-wider uppercase">
+                  Official Tactics Course
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content Area -->
+      <main class="px-5 pt-4 space-y-4 max-w-xl mx-auto">
+        
+        <!-- Breadcrumb / Back Link -->
+        <div class="flex items-center justify-between pb-1">
+          <a
+            href="main_menu-XHH3AzhjuHX.html"
+            class="inline-flex items-center gap-1.5 text-xs font-bold text-muted-foreground hover:text-primary transition-colors py-1 px-2.5 rounded-lg hover:bg-secondary active:scale-95"
+          >
+            <iconify-icon icon="ph:arrow-left-bold" class="text-sm"></iconify-icon>
+            <span>Back to Main Menu</span>
+          </a>
+          <span class="text-[10px] font-bold text-emerald-800 bg-emerald-100/70 border border-emerald-200/60 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+            Free Preview
+          </span>
+        </div>
+
+        <!-- Hero Card with Previous Image -->
+        <div class="bg-card border border-border p-6 rounded-2xl shadow-xs text-center space-y-3">
+          <div class="w-36 h-36 mx-auto flex items-center justify-center">
+            <img
+              alt="Key in Lock"
+              src="https://ggrhecslgdflloszjkwl.supabase.co/storage/v1/object/public/user-assets/3UkwyEF5NlN/ai/image-vJrB8FBbYiA.png"
+              class="max-w-full max-h-full object-contain filter drop-shadow-sm"
+            />
+          </div>
+          <div class="space-y-1">
+            <h2 class="text-2xl font-extrabold font-heading text-foreground tracking-tight">
+              The Key to Winning
+            </h2>
+            <p class="text-xs font-bold text-emerald-800 dark:text-emerald-400 italic">
+              Master the Rules to Control Judges &amp; Lawyers
+            </p>
+          </div>
+        </div>
+
+        <!-- # The #1 Lesson -->
+        <article class="bg-card border border-border p-5 rounded-2xl shadow-xs space-y-3">
+          <h3 class="text-sm font-bold font-heading text-foreground border-b border-border pb-2">
+            The #1 Lesson
+          </h3>
+          <div class="text-xs text-muted-foreground space-y-2 leading-relaxed">
+            <p><strong class="text-primary font-bold">Learn this first!</strong></p>
+            <p>This is your key to the courthouse!</p>
+            <p class="font-semibold text-foreground">Written words win court cases!</p>
+            <p>
+              TV shows like "Law &amp; Order" give the idea that cases are won at trial by questioning witnesses and introducing "new" evidence to the jury at the last minute.
+            </p>
+            <p class="font-bold text-foreground">Not so!</p>
+            <p>That's television, <em>not real life!</em></p>
+            <p>Cases are won <em>in writing!</em></p>
+            <p>Most cases can be won <em>before</em> trial.</p>
+            <p>Words <em>written and filed</em> win court cases!</p>
+            <p>
+              Every case starts with initial filings and follows step-by-step as the parties go back-and-forth like players in a chess or checkers game.
+            </p>
+            <p>
+              If the law is on your side (and you follow the step-by-step tactics taught here), you <em>should</em> be able to win <em>without going to trial.</em>
+            </p>
+            <p>
+              I've been a case-winning attorney for 40 years, helping people these last 29 years to see how easy it is to win with step-by-step tactics.
+            </p>
+            <p><strong>SIMPLICITY wins!</strong></p>
+            <p>SIMPLICITY that's easy-to-learn!</p>
+            <p>
+              The most important thing to know is that all "winnable" cases can be won <em>without trial</em>. There may be a few hearings to argue motions, but using the "written" tools and step-by-step tactics explained in this course, <em>you should never have to go to trial.</em>
+            </p>
+            <p>Win <em>on paper!</em></p>
+            <p>WRITTEN WORDS <em>...</em> not talk at trial.</p>
+          </div>
+        </article>
+
+        <!-- # Why ... -->
+        <article class="bg-card border border-border p-5 rounded-2xl shadow-xs space-y-3">
+          <h3 class="text-sm font-bold font-heading text-foreground border-b border-border pb-2">
+            Why ...
+          </h3>
+          <div class="text-xs text-muted-foreground space-y-2.5 leading-relaxed">
+            <p>
+              There is no question you could ask at trial <em>that you cannot ask and get answers to before trial.</em>
+            </p>
+            <p>
+              There are no documents you could produce (or force your opponent to produce) at trial <em>that cannot be produced before trial.</em>
+            </p>
+            <p>
+              There are no things you could produce (or force your opponent to produce) at trial <em>that cannot be produced before trial.</em>
+            </p>
+            <p>
+              There are no witnesses you could call at trial <em>that you cannot get written answers from before trial.</em>
+            </p>
+            <p>
+              This game of back-and-forth begins with the first papers filed and lasts until the final verdict is entered on the record.
+            </p>
+            <p>
+              After the first papers are filed, a "flurry of motions" battle is fought in an attempt to settle the case.
+            </p>
+            <p>
+              When the flurry ends (if the case does not settle), the battle for evidence begins.
+            </p>
+            <p>
+              All this is done on paper with motions and discovery requests. For example, in a civil case, you have the following five tools to get evidence and cite laws triggered by the evidence. The course explains these five in detail with sample forms and uses.
+            </p>
+            <ul class="space-y-1 pl-2 text-foreground font-semibold">
+              <li>* Requests for Admissions</li>
+              <li>* Requests for Production</li>
+              <li>* Interrogatories</li>
+              <li>* Depositions</li>
+              <li>* Subpoenas and other court orders</li>
+            </ul>
+            <p class="font-bold text-foreground">
+              There is <em>nothing</em> you cannot get with these powerful tools!
+            </p>
+            <p>Force people to admit facts and laws <em>on the record.</em></p>
+            <p>Force people to produce documents and things <em>on the record.</em></p>
+            <p>Force people to answer questions in writing <em>under oath.</em></p>
+            <p>Force people to sit for depositions <em>under oath.</em></p>
+            <p>
+              Force banks, phone companies, and others to produce records and, if necessary, to attend depositions to explain the records.
+            </p>
+            <p>All these get <strong>words on paper</strong>.</p>
+            <p>Written words win court cases.</p>
+            <p>Written words in the court file.</p>
+            <p>Most lawyers never figure this out.</p>
+            <p><strong>Words on paper win court cases.</strong></p>
+          </div>
+        </article>
+
+        <!-- # Why? -->
+        <article class="bg-card border border-border p-5 rounded-2xl shadow-xs space-y-3">
+          <h3 class="text-sm font-bold font-heading text-foreground border-b border-border pb-2">
+            Why?
+          </h3>
+          <div class="text-xs text-muted-foreground space-y-2 leading-relaxed">
+            <p class="font-bold text-foreground">Judges hate to be appealed.</p>
+            <p>
+              They hang together, talk about cases over lunch, and develop long-lasting friendships. Many are prominent leaders in the community where their reputation is scrutinized by the public.
+            </p>
+            <p class="font-semibold text-foreground">They hate to be appealed.</p>
+            <p>
+              With these step-by-step tactics, you will nail down the law and the evidence <strong>in writing</strong> ... one step at a time.
+            </p>
+            <p>
+              Control the judge with timely objections that <em>enforce</em> the rules of evidence and create a record that will be reviewed by the appellate court <em>if the judge rules against you.</em>
+            </p>
+          </div>
+        </article>
+
+        <!-- # Step-by-Step -->
+        <article class="bg-card border border-border p-5 rounded-2xl shadow-xs space-y-3">
+          <h3 class="text-sm font-bold font-heading text-foreground border-b border-border pb-2">
+            Step-by-Step
+          </h3>
+          <div class="text-xs text-muted-foreground space-y-2 leading-relaxed">
+            <p>
+              You and your opponent go back-and-forth <em>making a record</em> of your competing positions on the law and evidence.
+            </p>
+            <p>
+              The judge knows who is winning <em>based on the written record that is being created step-by-step.</em>
+            </p>
+            <p>
+              Use the step-by-step tactics taught in this course and, if your case is "winnable" (law and facts in your favor), the judge will know that the appellate court will reverse or remand if the judge rules against you.
+            </p>
+            <p class="font-bold text-foreground">This is how you control judges!</p>
+            <p class="font-bold text-foreground"><strong>This is how you win!</strong></p>
+          </div>
+        </article>
+
+        <!-- # Why AI Is Not Enough -->
+        <article class="bg-card border border-border p-5 rounded-2xl shadow-xs space-y-3">
+          <h3 class="text-sm font-bold font-heading text-foreground border-b border-border pb-2">
+            Why AI Is Not Enough
+          </h3>
+          <div class="text-xs text-muted-foreground space-y-2 leading-relaxed">
+            <p class="font-bold text-foreground">
+              <strong>AI cannot "anticipate" these back-and-forth steps.</strong>
+            </p>
+            <p>
+              AI can write for you. YOU must know what it needs to write. It can only write what YOU tell it to write.
+            </p>
+            <p>
+              YOU need to know the "next step". AI cannot anticipate. It can only do what you prompt it to do. The prompting is up to YOU.
+            </p>
+            <p>
+              YOU need to know what will follow that "next step". AI has no idea. YOU <em>must</em> know!
+            </p>
+            <p>YOU need to object at hearings. AI can't do that for you.</p>
+            <p>YOU need a complete step-by-step plan. AI cannot plan for you.</p>
+            <p>
+              AI cannot anticipate sudden changes or surprises. You can when you know the overall step-by-step tactics that win cases.
+            </p>
+            <p>AI cannot take your place at a deposition. Only YOU can do that.</p>
+            <p>AI is a tool.</p>
+            <p>AI admits that it makes mistakes.</p>
+            <p>YOU must be the one to manage your case.</p>
+            <p class="font-bold text-foreground">AI cannot replace YOU.</p>
+          </div>
+        </article>
+
+        <!-- # Making the Record -->
+        <article class="bg-card border border-border p-5 rounded-2xl shadow-xs space-y-3">
+          <h3 class="text-sm font-bold font-heading text-foreground border-b border-border pb-2">
+            Making the Record
+          </h3>
+          <div class="text-xs text-muted-foreground space-y-2 leading-relaxed">
+            <p>
+              Getting everything in writing and in the court file is what we call "making the record".
+            </p>
+            <p>It is a step-by-step tactical process AI cannot plan or do.</p>
+            <p class="font-bold text-foreground">It is <em>essential to winning.</em></p>
+            <p class="font-semibold text-foreground">Here are just a few things you will learn in this course:</p>
+            <ul class="space-y-1.5 pl-2 text-foreground">
+              <li>* Make objections <em>every time</em> the judge makes a mistake or allows your opponent to break the rules.</li>
+              <li>* Move the court with both verbal and written motions.</li>
+              <li>* Cite the law in written memoranda to support your motions.</li>
+              <li>* Set hearings for all of your motions that you want to argue before the judge.</li>
+              <li>* Set hearings for all of your opponent's motions that you want to argue before the judge.</li>
+              <li>* Do <em>not</em> set hearings for your opponent's motions unless you <em>want</em> to argue them. He may forget to set his own motions.</li>
+              <li>* Always arrange for all hearings (and trials) to be recorded so you can obtain an official transcript of everything that's said in case you need to appeal.</li>
+              <li>* Stick to "essential facts". Do not wander off point arguing things that don't matter, things that would give your opponent opportunities to confuse the judge.</li>
+              <li>* Do <em>everything</em> this course teaches.</li>
+              <li>* Skip nothing.</li>
+              <li>* Study <em>all</em> the classes in the MAIN MENU, whether it seems important to you or not.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- # Dealing with Lawyers and Judges -->
+        <article class="bg-card border border-border p-5 rounded-2xl shadow-xs space-y-3">
+          <h3 class="text-sm font-bold font-heading text-foreground border-b border-border pb-2">
+            Dealing with Lawyers and Judges
+          </h3>
+          <div class="text-xs text-muted-foreground space-y-2 leading-relaxed">
+            <p>
+              In my 40 years of winning cases as an attorney, most judges I appeared before were fair-minded and did their best to enforce the rules when I controlled them with my step-by-step tactics.
+            </p>
+            <p>Their verdicts were according to law and equity.</p>
+            <p>They followed the rules.</p>
+            <p>They enforced the rules.</p>
+            <p>
+              I got Justice for my clients by <em>controlling those judges</em> with the step-by-step tactics system explained in this course.
+            </p>
+            <p>
+              Most lawyers I met, however, were underhanded. They misled the judge. They hid evidence. They ignored or twisted the rules.
+            </p>
+            <p class="font-bold text-foreground">But, the rules rule!</p>
+            <p>
+              Know the rules and tactics explained here, and you will defeat the crooked lawyers every time!
+            </p>
+            <p class="font-bold text-foreground">Cheaters can't win.</p>
+            <p>
+              Judges will support you <em>if you do things this way</em>.
+            </p>
+          </div>
+        </article>
+
+        <!-- # Every Kind of Case -->
+        <article class="bg-card border border-border p-5 rounded-2xl shadow-xs space-y-3">
+          <h3 class="text-sm font-bold font-heading text-foreground border-b border-border pb-2">
+            Every Kind of Case
+          </h3>
+          <div class="text-xs text-muted-foreground space-y-2 leading-relaxed">
+            <p class="font-bold text-foreground"><strong>The rules rule!</strong></p>
+            <p>State or Federal.</p>
+            <p>Criminal or Civil.</p>
+            <p>No matter where you are.</p>
+            <p>
+              Click ALPHABET letters at the top to learn common legal terms. Try it now! A new window will open, then you can come back to this page.
+            </p>
+            <p>No matter who you are.</p>
+            <p class="font-semibold text-foreground">The rules are the same!</p>
+            <p>Learn them HERE!</p>
+            <p>The rules decide <em>who wins!</em></p>
+            <p class="font-bold text-foreground">Rules — <em>not judges!</em></p>
+            <p>
+              Judges are like umpires at a baseball game. They are paid to enforce the rules. They are <em>not</em> there to decide who wins.
+            </p>
+            <p>
+              Rules <em>and your step-by-step written record</em> decide <em>who wins!</em>
+            </p>
+            <p>
+              Learn the rules and case-winning step-by-step tactics here.
+            </p>
+            <p class="font-bold text-foreground"><strong>Start HERE!</strong></p>
+          </div>
+        </article>
+
+        <!-- Footer Notice -->
+        <footer class="pt-4 pb-2 text-center border-t border-border/60">
+          <p class="text-[11px] text-muted-foreground">Educational use only · Not legal advice</p>
+          <p class="text-[10px] text-muted-foreground/80 mt-1">
+            © 1997-2026 Dr. Frederick Graves d/b/a Jurisdictionary®
+          </p>
+        </footer>
+      </main>
+
+      <!-- Footer Navigation matching main menu / home screen copy -->
+      <nav
+        class="fixed bottom-0 w-full bg-card/95 backdrop-blur-md border-t border-border px-3 py-2 pb-5 flex justify-around items-center z-50 shadow-lg"
+      >
+        <a
+          href="home_screen__copy_-2s02TP1UkL8.html"
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <div class="w-10 h-7 rounded-full flex items-center justify-center">
+            <iconify-icon icon="ph:house-bold" class="text-lg"></iconify-icon>
+          </div>
+          <span class="text-[11px] font-medium">Home</span>
+        </a>
+        <a
+          href="main_menu-XHH3AzhjuHX.html"
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 text-primary"
+        >
+          <div class="w-10 h-7 rounded-full bg-primary/10 flex items-center justify-center">
+            <iconify-icon icon="ph:star-fill" class="text-lg"></iconify-icon>
+          </div>
+          <span class="text-[11px] font-bold">Course Include</span>
+        </a>
+        <a
+          href="order__copy_-TYCUDU6SE2d.html"
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <div class="w-10 h-7 rounded-full flex items-center justify-center">
+            <iconify-icon icon="ph:user-plus-bold" class="text-lg"></iconify-icon>
+          </div>
+          <span class="text-[11px] font-medium">Order a Friend</span>
+        </a>
+        <a
+          href="profile-Pr0f1lE2sK8.html"
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <div class="w-10 h-7 rounded-full flex items-center justify-center">
+            <iconify-icon icon="ph:user-circle-bold" class="text-lg"></iconify-icon>
+          </div>
+          <span class="text-[11px] font-medium">Profile</span>
+        </a>
+      </nav>
+
+    </div>
+  </body>
+</html>

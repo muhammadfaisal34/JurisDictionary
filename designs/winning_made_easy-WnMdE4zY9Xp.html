@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Winning Made Easy | JurisDictionary®</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+    <style type="text/tailwindcss">
+      @theme inline {
+        --color-background: var(--background);
+        --color-foreground: var(--foreground);
+        --color-primary: var(--primary);
+        --color-primary-foreground: var(--primary-foreground);
+        --color-secondary: var(--secondary);
+        --color-secondary-foreground: var(--secondary-foreground);
+        --color-muted: var(--muted);
+        --color-muted-foreground: var(--muted-foreground);
+        --color-accent: var(--accent);
+        --color-accent-foreground: var(--accent-foreground);
+        --color-destructive: var(--destructive);
+        --color-destructive-foreground: var(--destructive-foreground);
+        --color-card: var(--card);
+        --color-card-foreground: var(--card-foreground);
+        --color-popover: var(--popover);
+        --color-popover-foreground: var(--popover-foreground);
+        --color-border: var(--border);
+        --color-input: var(--input);
+        --color-ring: var(--ring);
+        --color-chart-1: var(--chart-1);
+        --color-chart-2: var(--chart-2);
+        --color-chart-3: var(--chart-3);
+        --color-chart-4: var(--chart-4);
+        --color-chart-5: var(--chart-5);
+
+        --font-sans: var(--font-sans);
+        --font-heading: var(--font-heading, var(--font-sans));
+        --font-serif: var(--font-serif);
+        --font-mono: var(--font-mono);
+      }
+
+      @theme {
+        --radius-xs: calc(var(--radius) - 8px);
+        --radius-sm: calc(var(--radius) - 4px);
+        --radius-md: calc(var(--radius) - 2px);
+        --radius-lg: var(--radius);
+        --radius-xl: calc(var(--radius) + 4px);
+        --radius-2xl: calc(var(--radius) + 8px);
+        --radius-3xl: calc(var(--radius) + 16px);
+        --radius-4xl: calc(var(--radius) + 24px);
+      }
+
+      * {
+        corner-shape: var(--shape, round);
+      }
+
+      .rounded-full,
+      .rounded-none,
+      .rounded-t-full,
+      .rounded-t-none,
+      .rounded-r-full,
+      .rounded-r-none,
+      .rounded-b-full,
+      .rounded-b-none,
+      .rounded-l-full,
+      .rounded-l-none,
+      .rounded-s-full,
+      .rounded-s-none,
+      .rounded-e-full,
+      .rounded-e-none,
+      .rounded-tl-full,
+      .rounded-tl-none,
+      .rounded-tr-full,
+      .rounded-tr-none,
+      .rounded-bl-full,
+      .rounded-bl-none,
+      .rounded-br-full,
+      .rounded-br-none,
+      .rounded-ss-full,
+      .rounded-ss-none,
+      .rounded-se-full,
+      .rounded-se-none,
+      .rounded-es-full,
+      .rounded-es-none,
+      .rounded-ee-full,
+      .rounded-ee-none {
+        corner-shape: round;
+      }
+
+      @utility rounded-* {
+        border-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+
+      @layer base {
+        * {
+          @apply border-border outline-ring/50;
+        }
+        body {
+          @apply bg-background text-foreground font-sans;
+        }
+      }
+
+      :root {
+        --shape: round;
+        --shape-multiplier: 1;
+
+        --background: #f8fafc;
+        --foreground: #0f172a;
+        --primary: #0c3b88;
+        --primary-foreground: #ffffff;
+        --secondary: #f1f5f9;
+        --secondary-foreground: #0f172a;
+        --muted: #f1f5f9;
+        --muted-foreground: #64748b;
+        --accent: #c81e28;
+        --accent-foreground: #ffffff;
+        --destructive: #dc2626;
+        --destructive-foreground: #ffffff;
+        --card: #ffffff;
+        --card-foreground: #0f172a;
+        --popover: #ffffff;
+        --popover-foreground: #0f172a;
+        --border: #e2e8f0;
+        --input: #ffffff;
+        --ring: #0c3b88;
+        --chart-1: #0c3b88;
+        --chart-2: #c81e28;
+        --chart-3: #16a34a;
+        --chart-4: #f59e0b;
+        --chart-5: #2563eb;
+
+        --font-sans: "Inter", sans-serif;
+        --font-heading: "Plus Jakarta Sans", sans-serif;
+        --font-serif: "Playfair Display", serif;
+        --font-mono: "JetBrains Mono", monospace;
+
+        --radius: 0.75rem;
+      }
+
+      /* Prevent layout shift for icons without explicit dimensions */
+      iconify-icon:not([width]):not([height]) {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+      }
+
+      /* Hide scrollbars */
+      *,
+      *::before,
+      *::after {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      *::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="min-h-screen bg-background text-foreground pb-24 font-sans selection:bg-primary/20">
+      
+      <!-- Header matching main menu / home screen copy -->
+      <header
+        class="sticky top-0 z-40 bg-card/95 backdrop-blur-md border-b border-border px-5 pt-12 pb-3.5 space-y-3 shadow-xs"
+      >
+        <div class="flex items-center justify-between gap-2">
+          <div class="flex items-center gap-2">
+            <a
+              href="main_menu-XHH3AzhjuHX.html"
+              class="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center text-foreground hover:bg-secondary/80 border border-border transition-all active:scale-95 shrink-0"
+              aria-label="Go back"
+            >
+              <iconify-icon icon="ph:arrow-left-bold" class="text-base"></iconify-icon>
+            </a>
+            <a href="home_screen__copy_-2s02TP1UkL8.html" class="flex items-center gap-2 hover:opacity-90 transition-opacity">
+              <img
+                alt="JurisDictionary Logo"
+                src="https://ggrhecslgdflloszjkwl.supabase.co/storage/v1/object/public/user-assets/3UkwyEF5NlN/ai/Jurisdictionary-4ZyQTmgzaZW.png"
+                class="h-8 w-auto object-contain shrink-0"
+              />
+              <div class="leading-tight">
+                <div
+                  class="font-extrabold text-foreground text-sm tracking-tight font-heading flex items-center"
+                >
+                  JurisDictionary<span class="text-[9px] align-super text-muted-foreground ml-0.5"
+                    >®</span
+                  >
+                </div>
+                <p class="text-[9px] text-muted-foreground font-semibold tracking-wider uppercase">
+                  Official Tactics Course
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content Container -->
+      <main class="px-5 pt-4 space-y-4 max-w-xl mx-auto">
+        
+        <!-- Simple Back Navigation & Step Badge -->
+        <div class="flex items-center justify-between pb-1">
+          <a
+            href="main_menu-XHH3AzhjuHX.html"
+            class="inline-flex items-center gap-1.5 text-xs font-bold text-muted-foreground hover:text-primary transition-colors py-1 px-2.5 rounded-lg hover:bg-secondary active:scale-95"
+          >
+            <iconify-icon icon="ph:arrow-left-bold" class="text-sm"></iconify-icon>
+            <span>Back to Main Menu</span>
+          </a>
+          <span class="text-[10px] font-bold text-emerald-800 bg-emerald-100/70 border border-emerald-200/60 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+            Free Preview
+          </span>
+        </div>
+
+        <!-- Hero Card matching evidence_rules_part_3 layout -->
+        <div class="bg-card border border-border p-6 rounded-2xl shadow-xs text-center space-y-3">
+          <div class="w-36 h-36 mx-auto flex items-center justify-center">
+            <img
+              alt="Winning Made Easy"
+              src="../assets/winning_made_easy.png"
+              class="max-w-full max-h-full object-contain filter drop-shadow-sm"
+            />
+          </div>
+          <div class="space-y-1">
+            <h2 class="text-2xl font-extrabold font-heading text-foreground tracking-tight">
+              Winning Made Easy
+            </h2>
+            <p class="text-xs font-bold text-emerald-800 dark:text-emerald-400 italic">
+              Just the Tools You Need
+            </p>
+          </div>
+        </div>
+
+        <!-- Section 1: Just Fit the Parts Together -->
+        <article class="bg-card border border-border p-5 rounded-2xl shadow-xs space-y-3">
+          <h3 class="text-sm font-bold font-heading text-foreground border-b border-border pb-2">
+            Just Fit the Parts Together
+          </h3>
+          <div class="text-xs text-muted-foreground space-y-2 leading-relaxed">
+            <p class="font-bold text-foreground">Here are only a few parts to every case:</p>
+            <p>• <strong class="text-foreground">Complaints</strong> (criminal and civil) that allege facts the pleader must prove to win.</p>
+            <p>• <strong class="text-foreground">Answers</strong> that deny what complaints allege.</p>
+            <p>• <strong class="text-foreground">Discovery</strong> both sides use to get evidence admitted to the court record to prove what's been alleged.</p>
+            <p>• <strong class="text-foreground">Motions and Memoranda</strong> that present the laws that will decide the case based on the allegations and proof.</p>
+            <p>• <strong class="text-foreground">Orders</strong> that compel the parties (and sometimes other people) to obey or be thrown in jail.</p>
+            <p class="font-bold text-primary pt-1">This simplicity is your power.</p>
+            <p>You don't have to be a rocket scientist to win.</p>
+            <p class="font-semibold text-foreground">Just follow the steps JurisDictionary® teaches.</p>
+          </div>
+        </article>
+
+        <!-- Section 2: Simplicity is Power -->
+        <article class="bg-card border border-border p-5 rounded-2xl shadow-xs space-y-3">
+          <h3 class="text-sm font-bold font-heading text-foreground border-b border-border pb-2">
+            Simplicity is Power
+          </h3>
+          <div class="text-xs text-muted-foreground space-y-2 leading-relaxed">
+            <p class="font-bold text-foreground text-sm">
+              Your #1 Right is the right to know how to control judges and lawyers to get Justice!
+            </p>
+            <p>
+              If you're suing someone, <strong class="text-foreground font-semibold">allege and prove</strong> the essential facts that trigger laws that compel judges to rule in your favor.
+            </p>
+            <p>
+              If you're being sued, <strong class="text-foreground font-semibold">allege and prove</strong> the essential facts that show that your plaintiff has not alleged or cannot prove the essential fact of his complaint.
+            </p>
+            <p>
+              If you're accused of a crime, <strong class="text-foreground font-semibold">allege and prove</strong> that the prosecutor has not alleged or cannot prove the essential facts of the alleged crime beyond any doubt.
+            </p>
+            <p class="font-bold text-foreground pt-1">That's it!</p>
+          </div>
+        </article>
+
+        <!-- Section 3: What You Need -->
+        <article class="bg-card border border-border p-5 rounded-2xl shadow-xs space-y-3">
+          <h3 class="text-sm font-bold font-heading text-foreground border-b border-border pb-2">
+            What You Need
+          </h3>
+          <div class="text-xs text-muted-foreground space-y-2 leading-relaxed">
+            <p class="font-bold text-foreground">You need just 5 things to win:</p>
+            <p>• The essential facts of your case</p>
+            <p>• The laws that the facts trigger</p>
+            <p>• To get your evidence in the court record</p>
+            <p>• To keep your opponent's evidence out</p>
+            <p>• Motions and memoranda that compel the judge to enforce the law</p>
+            <p class="italic pt-1">I didn't learn any of this in law school.</p>
+            <p class="font-bold text-foreground">I learned by fighting and winning.</p>
+          </div>
+        </article>
+
+        <!-- Section 4: The Law of the Case -->
+        <article class="bg-card border border-border p-5 rounded-2xl shadow-xs space-y-3">
+          <h3 class="text-sm font-bold font-heading text-foreground border-b border-border pb-2">
+            The Law of the Case
+          </h3>
+          <div class="text-xs text-muted-foreground space-y-2 leading-relaxed">
+            <p>
+              The facts alleged trigger which law or laws control the judge. You must control the judge with law(s) and, of course, the rules.
+            </p>
+            <p class="font-semibold text-foreground">Dog bite laws, for example, ask these questions:</p>
+            <p>• Did dog cause injury in the past?</p>
+            <p>• Was dog taunted by victim?</p>
+            <p>• Was victim on dog owner's property?</p>
+            <p>• Was dog under dog owner's control?</p>
+            <p>The law of your case will not be more complicated.</p>
+            <p>These facts are called <strong class="text-primary font-bold">essential facts</strong>.</p>
+            <p>They trigger the law(s) that control the judge.</p>
+            <p class="font-bold text-foreground">No other facts matter, so keep other stuff out!</p>
+          </div>
+        </article>
+
+        <!-- Section 5: Rules of Procedure -->
+        <article class="bg-card border border-border p-5 rounded-2xl shadow-xs space-y-3">
+          <h3 class="text-sm font-bold font-heading text-foreground border-b border-border pb-2">
+            Rules of Procedure
+          </h3>
+          <div class="text-xs text-muted-foreground space-y-2 leading-relaxed">
+            <p>The Rules of Procedure govern what the parties may do and when.</p>
+            <p class="font-bold text-foreground">Everything must be done "in order" step-by-step.</p>
+            <p>One step at-a-time.</p>
+            <p class="font-bold text-foreground">Don't let your opponent do anything "out of order".</p>
+            <p>The procedural rules are not rocket science.</p>
+          </div>
+        </article>
+
+        <!-- Section 6: Rules of Evidence -->
+        <article class="bg-card border border-border p-5 rounded-2xl shadow-xs space-y-3">
+          <h3 class="text-sm font-bold font-heading text-foreground border-b border-border pb-2">
+            Rules of Evidence
+          </h3>
+          <div class="text-xs text-muted-foreground space-y-2 leading-relaxed">
+            <p>The rules of evidence are <strong class="text-primary font-bold">"fact filters"</strong>.</p>
+            <p>They allow good facts in and keep bad facts out.</p>
+            <p class="font-semibold text-foreground">They are fair to both sides!</p>
+            <p class="font-bold text-foreground pt-1">In my Evidence Class you will learn how to:</p>
+            <p>• Stop your opponent from offering evidence the rules don't allow</p>
+            <p>• Stop your opponent's witnesses from offering hearsay</p>
+            <p>• Stop your opponent from badgering your witnesses</p>
+            <p>• Stop your opponent from wasting the court's time with irrelevant facts</p>
+            <p>• Stop lay people from offering expert testimony</p>
+            <p>• Stop expert witnesses from offering lay testimony</p>
+            <p>• Stop unauthenticated documents from being offered as evidence</p>
+            <p>• Stop your opponent from misleading the judge or jury</p>
+            <p>• And much, much, much more!</p>
+            <p class="font-bold text-foreground pt-1">It's easy once you see it this way.</p>
+          </div>
+        </article>
+
+        <!-- Section 7: Objections -->
+        <article class="bg-card border border-border p-5 rounded-2xl shadow-xs space-y-3">
+          <h3 class="text-sm font-bold font-heading text-foreground border-b border-border pb-2">
+            Objections
+          </h3>
+          <div class="text-xs text-muted-foreground space-y-2 leading-relaxed">
+            <p class="font-bold text-primary italic">Objections enforce the rules!</p>
+            <p>You will soon know how, when, and why to make objections.</p>
+            <p class="font-semibold text-foreground">They are critical to winning, because they control the judge!</p>
+            <p>They stop your opponent from cheating.</p>
+            <p>You will learn to do more than say "Objection!" like TV lawyers.</p>
+            <p>
+              You'll say "Objection!" then state <strong class="text-foreground font-bold">grounds</strong> for your objection that compel the judge to enforce the rules.
+            </p>
+            <p class="font-bold text-foreground pt-1">Everything STOPS until the judge rules on objections.</p>
+            <p>Sustained or denied.</p>
+            <p>Cannot be ignored.</p>
+            <p class="font-extrabold text-primary">Control the judge!</p>
+          </div>
+        </article>
+
+        <!-- Section 8: Moving the Court -->
+        <article class="bg-card border border-border p-5 rounded-2xl shadow-xs space-y-3">
+          <h3 class="text-sm font-bold font-heading text-foreground border-b border-border pb-2">
+            Moving the Court
+          </h3>
+          <div class="text-xs text-muted-foreground space-y-2 leading-relaxed">
+            <p class="font-bold text-foreground">Judges do nothing until you "move" them.</p>
+            <p>You do this with <strong class="text-foreground font-bold">"motions"</strong> — written and spoken.</p>
+            <p>Every motion requires an order.</p>
+            <p>Move the court to order anything you want.</p>
+            <p>Judges must either grant or deny them.</p>
+            <p class="font-bold text-foreground">They cannot ignore them.</p>
+          </div>
+        </article>
+
+        <!-- Section 9: Do Not Skip Ahead -->
+        <article class="bg-card border border-border p-5 rounded-2xl shadow-xs space-y-3">
+          <h3 class="text-sm font-bold font-heading text-foreground border-b border-border pb-2">
+            Do Not Skip Ahead
+          </h3>
+          <div class="text-xs text-muted-foreground space-y-2 leading-relaxed">
+            <p>
+              My classmates in law school who skipped classes now work for other lawyers, instead of running their own office.
+            </p>
+            <p class="font-bold text-foreground"><strong>Do NOT skip classes.</strong></p>
+            <p class="font-semibold text-foreground">Work through all the MAIN MENU classes in order!</p>
+            <p>Do NOT watch the Video Seminar until you finish Evidence and Objections classes.</p>
+            <p>Do NOT listen to the Audio Classroom until you finish Evidence and Objections classes.</p>
+            <p>Do NOT open REFERENCE or EXTRAS menus until you finish all the MAIN MENU classes.</p>
+            <p class="font-bold text-primary pt-1">Now go to the next class in the MAIN MENU.</p>
+          </div>
+        </article>
+
+        <!-- Clean Footer matching evidence_rules_part_3 -->
+        <footer class="pt-4 pb-2 text-center border-t border-border/60">
+          <p class="text-[11px] text-muted-foreground">Educational use only · Not legal advice</p>
+          <p class="text-[10px] text-muted-foreground/80 mt-1">
+            © 1997-2026 Dr. Frederick Graves d/b/a Jurisdictionary®
+          </p>
+        </footer>
+
+      </main>
+
+      <!-- Footer Navigation matching main menu / home screen copy -->
+      <nav
+        class="fixed bottom-0 w-full bg-card/95 backdrop-blur-md border-t border-border px-3 py-2 pb-5 flex justify-around items-center z-50 shadow-lg"
+      >
+        <a
+          href="home_screen__copy_-2s02TP1UkL8.html"
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <div class="w-10 h-7 rounded-full flex items-center justify-center">
+            <iconify-icon icon="ph:house-bold" class="text-lg"></iconify-icon>
+          </div>
+          <span class="text-[11px] font-medium">Home</span>
+        </a>
+        <a
+          href="main_menu-XHH3AzhjuHX.html"
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 text-primary"
+        >
+          <div class="w-10 h-7 rounded-full bg-primary/10 flex items-center justify-center">
+            <iconify-icon icon="ph:star-fill" class="text-lg"></iconify-icon>
+          </div>
+          <span class="text-[11px] font-bold">Course Include</span>
+        </a>
+        <a
+          href="order__copy_-TYCUDU6SE2d.html"
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <div class="w-10 h-7 rounded-full flex items-center justify-center">
+            <iconify-icon icon="ph:user-plus-bold" class="text-lg"></iconify-icon>
+          </div>
+          <span class="text-[11px] font-medium">Order a Friend</span>
+        </a>
+        <a
+          href="profile-Pr0f1lE2sK8.html"
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <div class="w-10 h-7 rounded-full flex items-center justify-center">
+            <iconify-icon icon="ph:user-circle-bold" class="text-lg"></iconify-icon>
+          </div>
+          <span class="text-[11px] font-medium">Profile</span>
+        </a>
+      </nav>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EvidenceRulesPart1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+    <style type="text/tailwindcss">
+      @theme inline {
+        --color-background: var(--background);
+        --color-foreground: var(--foreground);
+        --color-primary: var(--primary);
+        --color-primary-foreground: var(--primary-foreground);
+        --color-secondary: var(--secondary);
+        --color-secondary-foreground: var(--secondary-foreground);
+        --color-muted: var(--muted);
+        --color-muted-foreground: var(--muted-foreground);
+        --color-accent: var(--accent);
+        --color-accent-foreground: var(--accent-foreground);
+        --color-destructive: var(--destructive);
+        --color-destructive-foreground: var(--destructive-foreground);
+        --color-card: var(--card);
+        --color-card-foreground: var(--card-foreground);
+        --color-popover: var(--popover);
+        --color-popover-foreground: var(--popover-foreground);
+        --color-border: var(--border);
+        --color-input: var(--input);
+        --color-ring: var(--ring);
+        --color-chart-1: var(--chart-1);
+        --color-chart-2: var(--chart-2);
+        --color-chart-3: var(--chart-3);
+        --color-chart-4: var(--chart-4);
+        --color-chart-5: var(--chart-5);
+
+        --font-sans: var(--font-sans);
+        --font-heading: var(--font-heading, var(--font-sans));
+        --font-serif: var(--font-serif);
+        --font-mono: var(--font-mono);
+      }
+
+      @theme {
+        --radius-xs: calc(var(--radius) - 8px);
+        --radius-sm: calc(var(--radius) - 4px);
+        --radius-md: calc(var(--radius) - 2px);
+        --radius-lg: var(--radius);
+        --radius-xl: calc(var(--radius) + 4px);
+        --radius-2xl: calc(var(--radius) + 8px);
+        --radius-3xl: calc(var(--radius) + 16px);
+        --radius-4xl: calc(var(--radius) + 24px);
+      }
+
+      * {
+        corner-shape: var(--shape, round);
+      }
+
+      .rounded-full,
+      .rounded-none,
+      .rounded-t-full,
+      .rounded-t-none,
+      .rounded-r-full,
+      .rounded-r-none,
+      .rounded-b-full,
+      .rounded-b-none,
+      .rounded-l-full,
+      .rounded-l-none,
+      .rounded-s-full,
+      .rounded-s-none,
+      .rounded-e-full,
+      .rounded-e-none,
+      .rounded-tl-full,
+      .rounded-tl-none,
+      .rounded-tr-full,
+      .rounded-tr-none,
+      .rounded-bl-full,
+      .rounded-bl-none,
+      .rounded-br-full,
+      .rounded-br-none,
+      .rounded-ss-full,
+      .rounded-ss-none,
+      .rounded-se-full,
+      .rounded-se-none,
+      .rounded-es-full,
+      .rounded-es-none,
+      .rounded-ee-full,
+      .rounded-ee-none {
+        corner-shape: round;
+      }
+
+      @utility rounded-* {
+        border-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-t-* {
+        border-top-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-top-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-r-* {
+        border-top-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-bottom-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-b-* {
+        border-bottom-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-bottom-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-l-* {
+        border-top-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-bottom-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-tl-* {
+        border-top-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-tr-* {
+        border-top-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-bl-* {
+        border-bottom-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-br-* {
+        border-bottom-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-s-* {
+        border-start-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-end-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-e-* {
+        border-start-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-end-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-ss-* {
+        border-start-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-se-* {
+        border-start-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-es-* {
+        border-end-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-ee-* {
+        border-end-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+
+      @layer base {
+        * {
+          @apply border-border outline-ring/50;
+        }
+        body {
+          @apply bg-background text-foreground font-sans;
+        }
+      }
+
+      :root {
+        --shape: round;
+        --shape-multiplier: 1;
+
+        --background: #f8fafc;
+        --foreground: #0f172a;
+        --primary: #0c3b88;
+        --primary-foreground: #ffffff;
+        --secondary: #f1f5f9;
+        --secondary-foreground: #0f172a;
+        --muted: #f1f5f9;
+        --muted-foreground: #64748b;
+        --accent: #c81e28;
+        --accent-foreground: #ffffff;
+        --destructive: #dc2626;
+        --destructive-foreground: #ffffff;
+        --card: #ffffff;
+        --card-foreground: #0f172a;
+        --popover: #ffffff;
+        --popover-foreground: #0f172a;
+        --border: #e2e8f0;
+        --input: #ffffff;
+        --ring: #0c3b88;
+        --chart-1: #0c3b88;
+        --chart-2: #c81e28;
+        --chart-3: #16a34a;
+        --chart-4: #f59e0b;
+        --chart-5: #2563eb;
+
+        --font-sans: "Inter", sans-serif;
+        --font-heading: "Plus Jakarta Sans", sans-serif;
+        --font-serif: "Playfair Display", serif;
+        --font-mono: "JetBrains Mono", monospace;
+
+        --radius: 0.75rem;
+      }
+
+      /* Prevent layout shift for icons without explicit dimensions */
+      iconify-icon:not([width]):not([height]) {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+      }
+
+      /* Hide scrollbars */
+      *,
+      *::before,
+      *::after {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      *::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="min-h-screen bg-background text-foreground pb-24 font-sans selection:bg-primary/20">
+      <header
+        class="sticky top-0 z-40 bg-card/95 backdrop-blur-md border-b border-border px-5 pt-12 pb-3.5"
+      >
+        <div class="flex items-center justify-between">
+          <a href="home_screen-6S2QnNNFe4u.html" class="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
+            <img
+              alt="JurisDictionary Logo"
+              src="https://ggrhecslgdflloszjkwl.supabase.co/storage/v1/object/public/user-assets/3UkwyEF5NlN/ai/Jurisdictionary-4ZyQTmgzaZW.png"
+              class="h-9 w-auto object-contain shrink-0"
+            />
+            <div class="leading-tight">
+              <div
+                class="font-extrabold text-foreground text-base tracking-tight font-heading flex items-center"
+              >
+                JurisDictionary<span class="text-[10px] align-super text-muted-foreground ml-0.5"
+                  >®</span
+                >
+              </div>
+              <p class="text-[10px] text-muted-foreground font-semibold tracking-wider uppercase">
+                Official Tactics Course
+              </p>
+            </div>
+          </a>
+          <a
+            href="sign_in-hRDCpZUfUiF.html"
+            class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-primary/10 hover:bg-primary/15 text-primary text-xs font-bold transition-all border border-primary/20 active:scale-95"
+          >
+            <iconify-icon icon="ph:sign-in-bold" class="text-sm"></iconify-icon><span>Sign In</span>
+          </a>
+        </div>
+      </header>
+      <main class="px-5 pt-4 space-y-4 max-w-xl mx-auto">
+        <div class="flex items-center justify-between pb-1">
+          <a
+            href="course_preview-Ya51J5OY2VF.html"
+            class="inline-flex items-center gap-1.5 text-xs font-bold text-muted-foreground hover:text-primary transition-colors py-1 px-2.5 rounded-lg hover:bg-secondary active:scale-95"
+          >
+            <iconify-icon icon="ph:arrow-left-bold" class="text-sm"></iconify-icon>
+            <span>Back to Course Preview</span>
+          </a>
+          <span class="text-[10px] font-bold text-emerald-800 bg-emerald-100/70 border border-emerald-200/60 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+            Free Preview
+          </span>
+        </div>
+        <div class="bg-card border border-border p-6 rounded-2xl shadow-xs text-center space-y-3">
+          <div class="w-36 h-36 mx-auto flex items-center justify-center">
+            <img
+              alt="Scientist Looking through Telescope"
+              src="https://ggrhecslgdflloszjkwl.supabase.co/storage/v1/object/public/user-assets/3UkwyEF5NlN/ai/image-DDdPF6QlbMZ.png"
+              class="max-w-full max-h-full object-contain filter drop-shadow-sm"
+            />
+          </div>
+          <div class="space-y-1">
+            <h2 class="text-2xl font-extrabold font-heading text-foreground tracking-tight">
+              Evidence Rules
+            </h2>
+            <p class="text-xs font-bold text-emerald-800 dark:text-emerald-400 italic">
+              The Filter that Wins Lawsuits
+            </p>
+          </div>
+        </div>
+        <article class="bg-card border border-border p-5 rounded-2xl shadow-xs space-y-4">
+          <div class="border-b border-border pb-2.5 flex items-center justify-between">
+            <h3 class="text-base font-bold font-heading text-foreground">Your Friendly "Filter"</h3>
+            <span
+              class="text-[10px] font-extrabold uppercase bg-primary/10 text-primary px-2 py-0.5 rounded"
+              >Core Lesson</span
+            >
+          </div>
+          <div class="p-4 rounded-xl bg-primary/5 border border-primary/20 space-y-2">
+            <p class="text-xs text-primary font-bold leading-relaxed">
+              If you have a pot of beans boiling, and you want to separate the beans from the water,
+              you could pour them through this sieve to filter the beans from the water.
+            </p>
+            <p class="text-xs font-extrabold text-primary uppercase tracking-wide">
+              You want the beans! NOT THE WATER!
+            </p>
+            <p class="text-sm font-black text-destructive pt-1">That's what Evidence Rules do.</p>
+          </div>
+          <div class="space-y-3 text-xs text-foreground leading-relaxed">
+            <p>Evidence Rules <strong class="text-foreground">"filter"</strong> stuff.</p>
+            <p>
+              They filter out lies, forgeries, and other made up stuff so the court hears only
+              relevant and reliable information so it can make proper decisions and secure Justice
+              for good people like <strong class="text-primary font-bold">YOU</strong>.
+            </p>
+            <div
+              class="p-3 bg-secondary/80 rounded-xl border border-border space-y-1 text-center font-bold text-xs"
+            >
+              <p class="text-emerald-700 dark:text-emerald-400">Good stuff comes in.</p>
+              <p class="text-destructive">Bad stuff stays out.</p>
+            </div>
+            <p>Nothing should be heard that might unjustly influence the judge or the jury.</p>
+            <p
+              class="font-medium bg-amber-500/10 p-3 rounded-xl border border-amber-500/20 text-foreground"
+            >
+              Winning isn't just getting your stuff in. It's mostly keeping your opponent's stuff
+              out! That's why you <span class="underline font-bold">must</span> know how to use the
+              Evidence Rules. If you want to win, that is.
+            </p>
+            <p>All that "stuff" you think is evidence can't help you if it's not admitted.</p>
+            <div
+              class="p-3.5 bg-destructive/10 border border-destructive/20 rounded-xl text-destructive font-medium text-xs"
+            >
+              If your opponent gets his stuff in and uses the evidence rules to keep your stuff out
+              ... well ... <span class="font-extrabold underline uppercase">you lose!</span>
+            </div>
+            <p class="font-bold text-primary">Everyone who wants to win needs this class!</p>
+            <p>People often tell me, <em>"I've got all the evidence I need."</em></p>
+            <p>
+              Until it's admitted, however, it's just "stuff". Only
+              <strong class="text-foreground">admissible</strong> evidence is evidence.
+            </p>
+            <div class="p-4 bg-primary/5 border border-primary/25 rounded-xl space-y-2 text-center">
+              <p class="font-extrabold text-primary text-xs tracking-wide">
+                Your "stuff" isn't evidence unless and until it's admitted!
+              </p>
+              <p class="font-extrabold text-primary text-xs tracking-wide">
+                Your "stuff" isn't evidence unless and until it's admitted!
+              </p>
+              <p class="font-extrabold text-primary text-xs tracking-wide">
+                Your "stuff" isn't evidence unless and until it's admitted!
+              </p>
+            </div>
+            <p>
+              Dive head-first into this exciting class that will entertain and empower you. You will
+              quickly learn how to get your stuff admitted and toss your opponent's stuff on the
+              junk heap ... so <strong class="text-primary font-bold">YOU</strong> can win!
+            </p>
+            <p class="text-muted-foreground">
+              Most people (including stupid lawyers) never bother to learn these rules. And, the few
+              who do know them have no idea how to use them
+              <span class="italic font-bold text-foreground">effectively</span>.
+            </p>
+            <div class="p-3.5 bg-secondary/80 border border-border rounded-xl space-y-1.5">
+              <p class="font-bold text-foreground text-xs">You will know in just 2 hours!</p>
+              <p class="text-muted-foreground text-xs">
+                They are your friend. They are fair. They are the most important tool in your
+                toolbox.
+              </p>
+              <p class="text-foreground text-xs font-medium pt-1">
+                I sat through two semesters of Evidence at law school and fought with lawyers for 40
+                years so you can know what you will learn here in just 2 hours.
+              </p>
+            </div>
+          </div>
+          <div class="space-y-4 pt-2">
+            <div
+              class="bg-gradient-to-br from-emerald-900 to-emerald-950 text-white p-4 rounded-xl border border-emerald-700 shadow-md text-center space-y-1.5"
+            >
+              <h4 class="text-sm font-extrabold uppercase tracking-wider text-amber-300">
+                Winning is Easy
+              </h4>
+              <p class="text-xs text-emerald-100 font-medium">Know the facts you must prove.</p>
+              <p class="text-xs text-emerald-100 font-medium">State the facts in your pleadings.</p>
+              <p class="text-xs text-emerald-100 font-medium">Prove the facts with discovery.</p>
+              <p class="text-xs text-emerald-100 font-medium">Move the court for judgment.</p>
+              <p class="text-xs font-bold text-amber-300 pt-1">This Course Shows How</p>
+            </div>
+            <div class="space-y-2">
+              <h4 class="text-xs font-bold font-heading text-primary uppercase tracking-wider">
+                Class Includes:
+              </h4>
+              <div
+                class="grid grid-cols-1 gap-1.5 text-xs text-foreground bg-secondary/40 p-3 rounded-xl border border-border"
+              >
+                <div class="flex items-center gap-2">
+                  <span class="text-primary font-bold">•</span
+                  ><span>Admissibility of Evidence</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-primary font-bold">•</span><span>Judicial Notice</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-primary font-bold">•</span
+                  ><span>Presumptions and How to Use Them</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-primary font-bold">•</span><span>Relevance</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-primary font-bold">•</span><span>Privilege</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-primary font-bold">•</span><span>Competence</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-primary font-bold">•</span><span>Opinion Testimony</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-primary font-bold">•</span><span>Expert Testimony</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-primary font-bold">•</span><span>Hearsay</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-primary font-bold">•</span><span>Hearsay Exceptions</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-primary font-bold">•</span><span>Authentication</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-primary font-bold">•</span
+                  ><span>Application of Evidence Rules Generally</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-primary font-bold">•</span><span>Conclusion</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-primary font-bold">•</span><span>Quiz</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <div class="pt-2">
+          <a
+            href="order-2r4Rm0xYGjE.html"
+            class="w-full bg-primary hover:bg-primary/95 text-primary-foreground py-3.5 px-4 rounded-xl font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 active:scale-[0.99] text-center"
+            ><span>Get Everything You Need – $249</span
+            ><iconify-icon icon="ph:arrow-right-bold" class="text-base"></iconify-icon
+          ></a>
+        </div>
+        <footer class="pt-4 pb-2 text-center border-t border-border/60">
+          <p class="text-[11px] text-muted-foreground">Educational use only · Not legal advice</p>
+          <p class="text-[10px] text-muted-foreground/80 mt-1">
+            © 1997-2026 Dr. Frederick Graves d/b/a Jurisdictionary®
+          </p>
+        </footer>
+      </main>
+      <nav
+        class="fixed bottom-0 left-0 w-full bg-card/95 backdrop-blur-md border-t border-border px-2 py-2 pb-5 flex justify-around items-center z-50 shadow-lg"
+      >
+        <a
+          href="home_screen-6S2QnNNFe4u.html"
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <div class="w-10 h-7 rounded-full flex items-center justify-center">
+            <iconify-icon icon="ph:house-bold" class="text-lg"></iconify-icon>
+          </div>
+          <span class="text-[10px] sm:text-[11px] font-medium text-center leading-tight truncate">Home</span>
+        </a>
+        <a
+          href="tutoring_screen-Df2xkyPXI3c.html"
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <div class="w-10 h-7 rounded-full flex items-center justify-center">
+            <iconify-icon icon="ph:graduation-cap-bold" class="text-lg"></iconify-icon>
+          </div>
+          <span class="text-[10px] sm:text-[11px] font-medium text-center leading-tight truncate">Tutoring</span>
+        </a>
+        <a
+          href="course_include-yc6Df5F4icu.html"
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <div class="w-10 h-7 rounded-full flex items-center justify-center">
+            <iconify-icon icon="ph:book-open-bold" class="text-lg"></iconify-icon>
+          </div>
+          <span class="text-[10px] sm:text-[11px] font-medium text-center leading-tight truncate">Course Include</span>
+        </a>
+        <a
+          href="about_us-msvVEMuOv4W.html"
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <div class="w-10 h-7 rounded-full flex items-center justify-center">
+            <iconify-icon icon="ph:info-bold" class="text-lg"></iconify-icon>
+          </div>
+          <span class="text-[10px] sm:text-[11px] font-medium text-center leading-tight truncate">About Us</span>
+        </a>
+      </nav>
+    </div>
+  </body>
+</html>

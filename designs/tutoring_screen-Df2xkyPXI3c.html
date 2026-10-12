@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TutoringScreen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+    <style type="text/tailwindcss">
+      @theme inline {
+        --color-background: var(--background);
+        --color-foreground: var(--foreground);
+        --color-primary: var(--primary);
+        --color-primary-foreground: var(--primary-foreground);
+        --color-secondary: var(--secondary);
+        --color-secondary-foreground: var(--secondary-foreground);
+        --color-muted: var(--muted);
+        --color-muted-foreground: var(--muted-foreground);
+        --color-accent: var(--accent);
+        --color-accent-foreground: var(--accent-foreground);
+        --color-destructive: var(--destructive);
+        --color-destructive-foreground: var(--destructive-foreground);
+        --color-card: var(--card);
+        --color-card-foreground: var(--card-foreground);
+        --color-popover: var(--popover);
+        --color-popover-foreground: var(--popover-foreground);
+        --color-border: var(--border);
+        --color-input: var(--input);
+        --color-ring: var(--ring);
+        --color-chart-1: var(--chart-1);
+        --color-chart-2: var(--chart-2);
+        --color-chart-3: var(--chart-3);
+        --color-chart-4: var(--chart-4);
+        --color-chart-5: var(--chart-5);
+
+        --font-sans: var(--font-sans);
+        --font-heading: var(--font-heading, var(--font-sans));
+        --font-serif: var(--font-serif);
+        --font-mono: var(--font-mono);
+      }
+
+      @theme {
+        --radius-xs: calc(var(--radius) - 8px);
+        --radius-sm: calc(var(--radius) - 4px);
+        --radius-md: calc(var(--radius) - 2px);
+        --radius-lg: var(--radius);
+        --radius-xl: calc(var(--radius) + 4px);
+        --radius-2xl: calc(var(--radius) + 8px);
+        --radius-3xl: calc(var(--radius) + 16px);
+        --radius-4xl: calc(var(--radius) + 24px);
+      }
+
+      * {
+        corner-shape: var(--shape, round);
+      }
+
+      .rounded-full,
+      .rounded-none,
+      .rounded-t-full,
+      .rounded-t-none,
+      .rounded-r-full,
+      .rounded-r-none,
+      .rounded-b-full,
+      .rounded-b-none,
+      .rounded-l-full,
+      .rounded-l-none,
+      .rounded-s-full,
+      .rounded-s-none,
+      .rounded-e-full,
+      .rounded-e-none,
+      .rounded-tl-full,
+      .rounded-tl-none,
+      .rounded-tr-full,
+      .rounded-tr-none,
+      .rounded-bl-full,
+      .rounded-bl-none,
+      .rounded-br-full,
+      .rounded-br-none,
+      .rounded-ss-full,
+      .rounded-ss-none,
+      .rounded-se-full,
+      .rounded-se-none,
+      .rounded-es-full,
+      .rounded-es-none,
+      .rounded-ee-full,
+      .rounded-ee-none {
+        corner-shape: round;
+      }
+
+      @utility rounded-* {
+        border-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-t-* {
+        border-top-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-top-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-r-* {
+        border-top-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-bottom-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-b-* {
+        border-bottom-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-bottom-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-l-* {
+        border-top-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-bottom-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-tl-* {
+        border-top-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-tr-* {
+        border-top-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-bl-* {
+        border-bottom-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-br-* {
+        border-bottom-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-s-* {
+        border-start-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-end-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-e-* {
+        border-start-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-end-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-ss-* {
+        border-start-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-se-* {
+        border-start-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-es-* {
+        border-end-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-ee-* {
+        border-end-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+
+      @layer base {
+        * {
+          @apply border-border outline-ring/50;
+        }
+        body {
+          @apply bg-background text-foreground font-sans;
+        }
+      }
+
+      :root {
+        --shape: round;
+        --shape-multiplier: 1;
+
+        --background: #f8fafc;
+        --foreground: #0f172a;
+        --primary: #0c3b88;
+        --primary-foreground: #ffffff;
+        --secondary: #f1f5f9;
+        --secondary-foreground: #0f172a;
+        --muted: #f1f5f9;
+        --muted-foreground: #64748b;
+        --accent: #c81e28;
+        --accent-foreground: #ffffff;
+        --destructive: #dc2626;
+        --destructive-foreground: #ffffff;
+        --card: #ffffff;
+        --card-foreground: #0f172a;
+        --popover: #ffffff;
+        --popover-foreground: #0f172a;
+        --border: #e2e8f0;
+        --input: #ffffff;
+        --ring: #0c3b88;
+        --chart-1: #0c3b88;
+        --chart-2: #c81e28;
+        --chart-3: #16a34a;
+        --chart-4: #f59e0b;
+        --chart-5: #2563eb;
+
+        --font-sans: "Inter", sans-serif;
+        --font-heading: "Plus Jakarta Sans", sans-serif;
+        --font-serif: "Playfair Display", serif;
+        --font-mono: "JetBrains Mono", monospace;
+
+        --radius: 0.75rem;
+      }
+
+      /* Prevent layout shift for icons without explicit dimensions */
+      iconify-icon:not([width]):not([height]) {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+      }
+
+      /* Hide scrollbars */
+      *,
+      *::before,
+      *::after {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      *::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="min-h-screen bg-background text-foreground pb-24 font-sans selection:bg-primary/20">
+      <header
+        class="sticky top-0 z-40 bg-card/95 backdrop-blur-md border-b border-border px-5 pt-12 pb-3.5"
+      >
+        <div class="flex items-center justify-between">
+          <a href="home_screen-6S2QnNNFe4u.html" class="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
+            <img
+              alt="JurisDictionary Logo"
+              src="https://ggrhecslgdflloszjkwl.supabase.co/storage/v1/object/public/user-assets/3UkwyEF5NlN/ai/Jurisdictionary-4ZyQTmgzaZW.png"
+              class="h-9 w-auto object-contain shrink-0"
+            />
+            <div class="leading-tight">
+              <div
+                class="font-extrabold text-foreground text-base tracking-tight font-heading flex items-center"
+              >
+                JurisDictionary<span class="text-[10px] align-super text-muted-foreground ml-0.5"
+                  >®</span
+                >
+              </div>
+              <p class="text-[10px] text-muted-foreground font-semibold tracking-wider uppercase">
+                Official Tactics Course
+              </p>
+            </div>
+          </a>
+          <a
+            href="sign_in-hRDCpZUfUiF.html"
+            class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-primary/10 hover:bg-primary/15 text-primary text-xs font-bold transition-all border border-primary/20 active:scale-95"
+          >
+            <iconify-icon icon="ph:sign-in-bold" class="text-sm"></iconify-icon><span>Sign In</span>
+          </a>
+        </div>
+      </header>
+      <main class="px-5 pt-4 space-y-5">
+        <section
+          class="bg-gradient-to-br from-primary via-[#0c3b88] to-[#1a2b5b] text-white p-5 rounded-2xl shadow-md border border-white/10 relative overflow-hidden space-y-4"
+        >
+          <div class="space-y-1">
+            <span
+              class="inline-block text-[11px] font-bold tracking-widest text-blue-200 uppercase bg-white/10 px-2.5 py-1 rounded-md"
+              >Personal Legal Coaching</span
+            >
+            <h1
+              class="text-2xl sm:text-3xl font-extrabold font-heading text-white tracking-tight leading-tight"
+            >
+              I Will Tutor You !
+            </h1>
+            <p class="text-xs text-blue-100/90 font-medium italic">
+              Direct guidance from a 40-year case-winning attorney
+            </p>
+          </div>
+          <div class="rounded-xl overflow-hidden border border-white/20 bg-black/40 shadow-inner">
+            <img
+              alt="Attorney Graves Teaching Students"
+              src="https://ggrhecslgdflloszjkwl.supabase.co/storage/v1/object/public/user-assets/3UkwyEF5NlN/ai/image-gqTbeMCYzAD.png"
+              class="w-full h-40 object-cover"
+            />
+            <div class="py-1.5 px-3 bg-black/60 text-center backdrop-blur-xs">
+              <p class="text-[11px] font-medium text-blue-100 italic">
+                Attorney Graves Teaching Students
+              </p>
+            </div>
+          </div>
+          <a
+            href="tel:8665293279"
+            class="flex items-center justify-between bg-white/10 hover:bg-white/15 border border-white/20 px-3.5 py-2.5 rounded-xl transition-all"
+            ><div class="flex items-center gap-2.5">
+              <div
+                class="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center shadow-xs"
+              >
+                <iconify-icon icon="ph:phone-call-fill" class="text-base"></iconify-icon>
+              </div>
+              <div>
+                <div class="text-[10px] text-blue-200 uppercase tracking-wider font-bold">
+                  Call Toll-Free
+                </div>
+                <div class="text-xs font-bold text-white tracking-wide">
+                  866-LAW-EASY <span class="font-normal text-blue-100">(866-529-3279)</span>
+                </div>
+              </div>
+            </div>
+            <iconify-icon icon="ph:caret-right-bold" class="text-white/80 text-sm"></iconify-icon
+          ></a>
+        </section>
+        <section class="bg-card border border-border p-5 rounded-2xl shadow-xs space-y-4">
+          <div class="flex items-start gap-4">
+            <img
+              alt="Attorney Frederick Graves"
+              src="https://ggrhecslgdflloszjkwl.supabase.co/storage/v1/object/public/user-assets/3UkwyEF5NlN/ai/image-fkPdceS6jen.png"
+              class="w-20 h-24 rounded-xl object-cover object-[50%_18%] border-2 border-primary/20 shrink-0 shadow-xs"
+            />
+            <div class="space-y-1">
+              <h2 class="text-base font-bold font-heading text-foreground">
+                Dr. Frederick David Graves, JD
+              </h2>
+              <div class="space-y-0.5 text-xs text-muted-foreground">
+                <p class="flex items-center gap-1.5 text-foreground font-semibold">
+                  <iconify-icon icon="ph:scales-bold" class="text-primary text-sm"></iconify-icon
+                  ><span>Attorney-at-Law since 1986</span>
+                </p>
+                <p class="flex items-center gap-1.5 text-xs text-muted-foreground">
+                  <iconify-icon
+                    icon="ph:identification-badge-bold"
+                    class="text-muted-foreground text-sm"
+                  ></iconify-icon
+                  ><span>Florida Bar Number 558583</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-secondary/60 rounded-xl p-4 border border-border/70 space-y-2 text-xs leading-relaxed text-foreground"
+          >
+            <p class="font-medium">
+              "I've been a case-winning attorney 40 years. I've won case after case for my clients."
+            </p>
+            <p class="font-medium text-muted-foreground">
+              "My course has helped thousands to win
+              <span class="italic text-foreground font-semibold">without a lawyer</span>."
+            </p>
+            <p class="text-primary font-bold text-sm pt-1">
+              "Now I will help <span class="underline decoration-accent decoration-2">you!</span>"
+            </p>
+          </div>
+          <button
+            class="w-full bg-primary hover:bg-primary/95 text-primary-foreground py-3.5 px-4 rounded-xl font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2 active:scale-[0.99]"
+          >
+            <iconify-icon icon="ph:file-arrow-down-bold" class="text-lg"></iconify-icon
+            ><span>Download Tutoring Agreement</span>
+          </button>
+        </section>
+        <section class="space-y-3">
+          <div class="flex items-center justify-between px-0.5">
+            <div>
+              <h2 class="text-base font-bold font-heading text-foreground tracking-tight">
+                Everything You Need
+              </h2>
+              <p class="text-xs text-muted-foreground">Course previews included in curriculum</p>
+            </div>
+            <a
+              href="course_preview-Ya51J5OY2VF.html"
+              class="text-[11px] font-bold text-primary bg-primary/10 hover:bg-primary/20 px-2.5 py-1 rounded-md transition-colors cursor-pointer"
+              >4 Previews</a
+            >
+          </div>
+          <div class="space-y-2.5">
+            <a
+              href="course_preview-Ya51J5OY2VF.html"
+              class="bg-card border border-border p-4 rounded-xl shadow-xs flex items-center justify-between transition-all hover:border-primary/40 block"
+            >
+              <div class="flex items-center gap-3.5">
+                <div
+                  class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center shrink-0"
+                >
+                  <iconify-icon icon="ph:scales-bold" class="text-xl"></iconify-icon>
+                </div>
+                <div>
+                  <h3 class="text-sm font-bold text-foreground">Evidence Rules Made Easy</h3>
+                  <p class="text-xs text-muted-foreground">
+                    Control admissibility, objections &amp; records
+                  </p>
+                </div>
+              </div>
+              <iconify-icon
+                icon="ph:caret-right-bold"
+                class="text-muted-foreground text-sm"
+              ></iconify-icon>
+            </a>
+            <a
+              href="course_preview-Ya51J5OY2VF.html"
+              class="bg-card border border-border p-4 rounded-xl shadow-xs flex items-center justify-between transition-all hover:border-primary/40 block"
+            >
+              <div class="flex items-center gap-3.5">
+                <div
+                  class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-600 flex items-center justify-center shrink-0"
+                >
+                  <iconify-icon icon="ph:hand-palm-bold" class="text-xl"></iconify-icon>
+                </div>
+                <div>
+                  <h3 class="text-sm font-bold text-foreground">How to Make Objections</h3>
+                  <p class="text-xs text-muted-foreground">
+                    Stop hearsay and illegal questions instantly
+                  </p>
+                </div>
+              </div>
+              <iconify-icon
+                icon="ph:caret-right-bold"
+                class="text-muted-foreground text-sm"
+              ></iconify-icon>
+            </a>
+            <a
+              href="course_preview-Ya51J5OY2VF.html"
+              class="bg-card border border-border p-4 rounded-xl shadow-xs flex items-center justify-between transition-all hover:border-primary/40 block"
+            >
+              <div class="flex items-center gap-3.5">
+                <div
+                  class="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center shrink-0"
+                >
+                  <iconify-icon icon="ph:key-bold" class="text-xl"></iconify-icon>
+                </div>
+                <div>
+                  <div class="flex items-center gap-1.5">
+                    <h3 class="text-sm font-bold text-foreground">The Key to Winning !</h3>
+                  </div>
+                </div>
+              </div>
+              <iconify-icon
+                icon="ph:caret-right-bold"
+                class="text-muted-foreground text-sm"
+              ></iconify-icon>
+            </a>
+          </div>
+        </section>
+      </main>
+      <nav
+        class="fixed bottom-0 left-0 w-full bg-card/95 backdrop-blur-md border-t border-border px-2 py-2 pb-5 flex justify-around items-center z-50 shadow-lg"
+      >
+        <a
+          href="home_screen-6S2QnNNFe4u.html"
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <div class="w-10 h-7 rounded-full flex items-center justify-center">
+            <iconify-icon icon="ph:house-bold" class="text-lg"></iconify-icon>
+          </div>
+          <span class="text-[10px] sm:text-[11px] font-medium text-center leading-tight truncate">Home</span>
+        </a>
+        <a
+          href="tutoring_screen-Df2xkyPXI3c.html"
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 text-primary"
+        >
+          <div class="w-10 h-7 rounded-full bg-primary/10 flex items-center justify-center">
+            <iconify-icon icon="ph:graduation-cap-fill" class="text-lg"></iconify-icon>
+          </div>
+          <span class="text-[10px] sm:text-[11px] font-bold text-center leading-tight truncate">Tutoring</span>
+        </a>
+        <a
+          href="course_include-yc6Df5F4icu.html"
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <div class="w-10 h-7 rounded-full flex items-center justify-center">
+            <iconify-icon icon="ph:book-open-bold" class="text-lg"></iconify-icon>
+          </div>
+          <span class="text-[10px] sm:text-[11px] font-medium text-center leading-tight truncate">Course Include</span>
+        </a>
+        <a
+          href="about_us-msvVEMuOv4W.html"
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <div class="w-10 h-7 rounded-full flex items-center justify-center">
+            <iconify-icon icon="ph:info-bold" class="text-lg"></iconify-icon>
+          </div>
+          <span class="text-[10px] sm:text-[11px] font-medium text-center leading-tight truncate">About Us</span>
+        </a>
+      </nav>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TwoFactorVerification</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+    <style type="text/tailwindcss">
+      @theme inline {
+        --color-background: var(--background);
+        --color-foreground: var(--foreground);
+        --color-primary: var(--primary);
+        --color-primary-foreground: var(--primary-foreground);
+        --color-secondary: var(--secondary);
+        --color-secondary-foreground: var(--secondary-foreground);
+        --color-muted: var(--muted);
+        --color-muted-foreground: var(--muted-foreground);
+        --color-accent: var(--accent);
+        --color-accent-foreground: var(--accent-foreground);
+        --color-destructive: var(--destructive);
+        --color-destructive-foreground: var(--destructive-foreground);
+        --color-card: var(--card);
+        --color-card-foreground: var(--card-foreground);
+        --color-popover: var(--popover);
+        --color-popover-foreground: var(--popover-foreground);
+        --color-border: var(--border);
+        --color-input: var(--input);
+        --color-ring: var(--ring);
+        --color-chart-1: var(--chart-1);
+        --color-chart-2: var(--chart-2);
+        --color-chart-3: var(--chart-3);
+        --color-chart-4: var(--chart-4);
+        --color-chart-5: var(--chart-5);
+
+        --font-sans: var(--font-sans);
+        --font-heading: var(--font-heading, var(--font-sans));
+        --font-serif: var(--font-serif);
+        --font-mono: var(--font-mono);
+      }
+
+      @theme {
+        --radius-xs: calc(var(--radius) - 8px);
+        --radius-sm: calc(var(--radius) - 4px);
+        --radius-md: calc(var(--radius) - 2px);
+        --radius-lg: var(--radius);
+        --radius-xl: calc(var(--radius) + 4px);
+        --radius-2xl: calc(var(--radius) + 8px);
+        --radius-3xl: calc(var(--radius) + 16px);
+        --radius-4xl: calc(var(--radius) + 24px);
+      }
+
+      * {
+        corner-shape: var(--shape, round);
+      }
+
+      .rounded-full,
+      .rounded-none,
+      .rounded-t-full,
+      .rounded-t-none,
+      .rounded-r-full,
+      .rounded-r-none,
+      .rounded-b-full,
+      .rounded-b-none,
+      .rounded-l-full,
+      .rounded-l-none,
+      .rounded-s-full,
+      .rounded-s-none,
+      .rounded-e-full,
+      .rounded-e-none,
+      .rounded-tl-full,
+      .rounded-tl-none,
+      .rounded-tr-full,
+      .rounded-tr-none,
+      .rounded-bl-full,
+      .rounded-bl-none,
+      .rounded-br-full,
+      .rounded-br-none,
+      .rounded-ss-full,
+      .rounded-ss-none,
+      .rounded-se-full,
+      .rounded-se-none,
+      .rounded-es-full,
+      .rounded-es-none,
+      .rounded-ee-full,
+      .rounded-ee-none {
+        corner-shape: round;
+      }
+
+      @utility rounded-* {
+        border-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-t-* {
+        border-top-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-top-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-r-* {
+        border-top-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-bottom-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-b-* {
+        border-bottom-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-bottom-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-l-* {
+        border-top-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-bottom-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-tl-* {
+        border-top-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-tr-* {
+        border-top-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-bl-* {
+        border-bottom-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-br-* {
+        border-bottom-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-s-* {
+        border-start-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-end-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-e-* {
+        border-start-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-end-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-ss-* {
+        border-start-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-se-* {
+        border-start-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-es-* {
+        border-end-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-ee-* {
+        border-end-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+
+      @layer base {
+        * {
+          @apply border-border outline-ring/50;
+        }
+        body {
+          @apply bg-background text-foreground font-sans;
+        }
+      }
+
+      :root {
+        --shape: round;
+        --shape-multiplier: 1;
+
+        --background: #f8fafc;
+        --foreground: #0f172a;
+        --primary: #0c3b88;
+        --primary-foreground: #ffffff;
+        --secondary: #f1f5f9;
+        --secondary-foreground: #0f172a;
+        --muted: #f1f5f9;
+        --muted-foreground: #64748b;
+        --accent: #c81e28;
+        --accent-foreground: #ffffff;
+        --destructive: #dc2626;
+        --destructive-foreground: #ffffff;
+        --card: #ffffff;
+        --card-foreground: #0f172a;
+        --popover: #ffffff;
+        --popover-foreground: #0f172a;
+        --border: #e2e8f0;
+        --input: #ffffff;
+        --ring: #0c3b88;
+        --chart-1: #0c3b88;
+        --chart-2: #c81e28;
+        --chart-3: #16a34a;
+        --chart-4: #f59e0b;
+        --chart-5: #2563eb;
+
+        --font-sans: "Inter", sans-serif;
+        --font-heading: "Plus Jakarta Sans", sans-serif;
+        --font-serif: "Playfair Display", serif;
+        --font-mono: "JetBrains Mono", monospace;
+
+        --radius: 0.75rem;
+      }
+
+      /* Prevent layout shift for icons without explicit dimensions */
+      iconify-icon:not([width]):not([height]) {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+      }
+
+      /* Hide scrollbars */
+      *,
+      *::before,
+      *::after {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      *::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="min-h-screen bg-background text-foreground pb-24 font-sans selection:bg-primary/20">
+      <header
+        class="sticky top-0 z-40 bg-card/95 backdrop-blur-md border-b border-border px-5 pt-12 pb-3.5"
+      >
+        <div class="flex items-center justify-between">
+          <a href="home_screen-6S2QnNNFe4u.html" class="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
+            <img
+              alt="JurisDictionary Logo"
+              src="https://ggrhecslgdflloszjkwl.supabase.co/storage/v1/object/public/user-assets/3UkwyEF5NlN/ai/Jurisdictionary-4ZyQTmgzaZW.png"
+              class="h-9 w-auto object-contain shrink-0"
+            />
+            <div class="leading-tight">
+              <div
+                class="font-extrabold text-foreground text-base tracking-tight font-heading flex items-center"
+              >
+                JurisDictionary<span class="text-[10px] align-super text-muted-foreground ml-0.5"
+                  >®</span
+                >
+              </div>
+              <p class="text-[10px] text-muted-foreground font-semibold tracking-wider uppercase">
+                Official Tactics Course
+              </p>
+            </div>
+          </a>
+          <a
+            href="sign_in-hRDCpZUfUiF.html"
+            class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-primary/10 hover:bg-primary/15 text-primary text-xs font-bold transition-all border border-primary/20 active:scale-95"
+          >
+            <iconify-icon icon="ph:sign-in-bold" class="text-sm"></iconify-icon><span>Sign In</span>
+          </a>
+        </div>
+      </header>
+      <main class="px-5 pt-6 space-y-5">
+        <section class="text-center space-y-2">
+          <h1
+            class="text-2xl sm:text-3xl font-extrabold font-heading text-accent tracking-tight leading-tight"
+          >
+            Do Not Close This Page !
+          </h1>
+          <p class="text-sm font-bold text-foreground">We sent you an email with a 6-digit code.</p>
+          <p class="text-sm font-bold text-foreground">
+            Get your email then enter 6-digit code here.
+          </p>
+        </section>
+        <section class="bg-card border border-border p-5 rounded-2xl shadow-xs space-y-4">
+          <form class="space-y-3.5" action="home_screen__copy_-2s02TP1UkL8.html" method="GET">
+            <input
+              type="text"
+              required
+              class="w-full bg-input border-2 border-primary/40 focus:border-primary rounded-xl px-4 py-3 text-center text-xl font-bold tracking-[0.4em] text-foreground outline-none transition-all"
+              inputmode="numeric"
+              maxlength="6"
+              aria-label="6-digit code"
+            /><button
+              type="submit"
+              class="w-full bg-primary hover:bg-primary/95 text-primary-foreground py-3.5 px-4 rounded-xl font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2 active:scale-[0.99]"
+            >
+              <iconify-icon icon="ph:check-circle-bold" class="text-base"></iconify-icon
+              ><span>Submit 6-Digit Code</span>
+            </button>
+          </form>
+          <a
+            href="order-2r4Rm0xYGjE.html"
+            class="w-full bg-secondary hover:bg-secondary/80 text-secondary-foreground py-3 px-4 rounded-xl font-bold text-xs border border-border transition-all flex items-center justify-center gap-2 active:scale-[0.99] text-center"
+          >
+            <span>Not a Subscriber? Click HERE! ($249)</span>
+          </a>
+        </section>
+        <section class="bg-card border border-border p-5 rounded-2xl shadow-xs space-y-3">
+          <div class="flex items-center gap-2 border-b border-border pb-2.5">
+            <div
+              class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0"
+            >
+              <iconify-icon icon="ph:cookie-bold" class="text-lg"></iconify-icon>
+            </div>
+            <h2 class="text-base font-bold font-heading text-foreground">
+              To Skip Sign In Procedure
+            </h2>
+          </div>
+          <div class="space-y-2.5 text-xs text-foreground leading-relaxed">
+            <p>
+              If your device allows "cookies" (<em
+                >and doesn't delete them when you turn off your device</em
+              >) you won't have to click the SIGN IN button again!
+            </p>
+            <p>
+              If you see the SIGN IN button when you return to my site, it is because your browser
+              is not allowing our harmless cookie or our cookie is being deleted.
+            </p>
+            <p>
+              Change your browser settings to allow all cookies or make an exception to allow
+              cookies only from "Jurisdictionary.com".
+            </p>
+            <p>Disable any settings or programs that automatically delete cookies.</p>
+            <p>
+              Click <a href="#" class="underline font-bold text-primary">HERE</a> for Google
+              know-how about harmless cookies.
+            </p>
+          </div>
+        </section>
+        <section class="bg-card border border-border p-5 rounded-2xl shadow-xs space-y-4">
+          <div class="p-3.5 rounded-xl border border-border bg-secondary/50 text-center space-y-2">
+            <div
+              class="w-10 h-10 mx-auto rounded-full bg-accent/10 text-accent flex items-center justify-center"
+            >
+              <iconify-icon icon="ph:shield-warning-fill" class="text-xl"></iconify-icon>
+            </div>
+            <p class="text-[11px] text-foreground leading-relaxed">
+              The unauthorized reproduction or distribution of a copyrighted work is illegal.
+              Criminal copyright infringement, including infringement without monetary gain, is
+              investigated by the FBI and is punishable by fines and federal imprisonment. No
+              portion of this course may be published, duplicated, shared, or used by anyone other
+              than the current subscribers.
+            </p>
+            <p class="text-[10px] font-extrabold text-accent uppercase tracking-wider">
+              FBI Anti-Piracy Warning
+            </p>
+          </div>
+          <div class="text-center text-xs text-foreground space-y-0.5">
+            <p>© 1997-2026 by Dr. Frederick Graves</p>
+            <p>d/b/a <span class="text-primary font-semibold">Jurisdictionary®</span></p>
+            <p class="uppercase text-[11px] tracking-wider text-muted-foreground">
+              All Rights Reserved
+            </p>
+            <p class="pt-1">866-LAW-EASY (866-529-3279)</p>
+            <p>19420 Heritage Harbor Parkway</p>
+            <p>Lutz, Florida 33558</p>
+            <a href="mailto:lawbook@jurisdictionary.com" class="font-bold text-primary underline"
+              >lawbook@jurisdictionary.com</a
+            >
+          </div>
+        </section>
+        <section class="bg-card border border-border p-5 rounded-2xl shadow-xs space-y-2">
+          <a
+            href="#"
+            class="p-2.5 rounded-xl bg-secondary/80 hover:bg-secondary border border-border flex items-center justify-between text-foreground text-xs font-medium transition-colors"
+            ><span>Make Money $$$ Helping Others!</span
+            ><iconify-icon
+              icon="ph:arrow-right-bold"
+              class="text-primary text-xs"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="p-2.5 rounded-xl bg-secondary/80 hover:bg-secondary border border-border flex items-center justify-between text-foreground text-xs font-medium transition-colors"
+            ><span>Free Flowchart</span
+            ><iconify-icon
+              icon="ph:arrow-right-bold"
+              class="text-primary text-xs"
+            ></iconify-icon></a
+          ><a
+            href="#"
+            class="p-2.5 rounded-xl bg-secondary/80 hover:bg-secondary border border-border flex items-center justify-between text-foreground text-xs font-medium transition-colors"
+            ><span>Free Legal Tactics</span
+            ><iconify-icon icon="ph:arrow-right-bold" class="text-primary text-xs"></iconify-icon
+          ></a>
+        </section>
+        <footer class="pt-1 pb-2 text-center border-t border-border/60 space-y-2">
+          <p class="text-[11px] font-bold text-foreground">
+            MISSION STATEMENT: To promote public understanding of the Rules of Justice that make
+            Civilization possible.
+          </p>
+          <div class="flex items-center justify-center gap-4 text-xs font-bold text-primary">
+            <a href="#" class="underline">About</a><a href="#" class="underline">Privacy Policy</a>
+          </div>
+        </footer>
+      </main>
+      <nav
+        class="fixed bottom-0 left-0 w-full bg-card/95 backdrop-blur-md border-t border-border px-2 py-2 pb-5 flex justify-around items-center z-50 shadow-lg"
+      >
+        <a
+          href="home_screen-6S2QnNNFe4u.html"
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <div class="w-10 h-7 rounded-full flex items-center justify-center">
+            <iconify-icon icon="ph:house-bold" class="text-lg"></iconify-icon>
+          </div>
+          <span class="text-[10px] sm:text-[11px] font-medium text-center leading-tight truncate">Home</span>
+        </a>
+        <a
+          href="tutoring_screen-Df2xkyPXI3c.html"
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <div class="w-10 h-7 rounded-full flex items-center justify-center">
+            <iconify-icon icon="ph:graduation-cap-bold" class="text-lg"></iconify-icon>
+          </div>
+          <span class="text-[10px] sm:text-[11px] font-medium text-center leading-tight truncate">Tutoring</span>
+        </a>
+        <a
+          href="course_include-yc6Df5F4icu.html"
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <div class="w-10 h-7 rounded-full flex items-center justify-center">
+            <iconify-icon icon="ph:book-open-bold" class="text-lg"></iconify-icon>
+          </div>
+          <span class="text-[10px] sm:text-[11px] font-medium text-center leading-tight truncate">Course Include</span>
+        </a>
+        <a
+          href="about_us-msvVEMuOv4W.html"
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <div class="w-10 h-7 rounded-full flex items-center justify-center">
+            <iconify-icon icon="ph:info-bold" class="text-lg"></iconify-icon>
+          </div>
+          <span class="text-[10px] sm:text-[11px] font-medium text-center leading-tight truncate">About Us</span>
+        </a>
+      </nav>
+    </div>
+  </body>
+</html>
